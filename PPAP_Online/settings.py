@@ -88,10 +88,10 @@ WSGI_APPLICATION = 'PPAP_Online.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'e80_ppap',
-        'USER': 'e80',
-        'PASSWORD': 'neoempresarial',
-        'HOST': 'localhost',
+        'NAME': 'heroku_0a213897d393ee6',
+        'USER': 'bb3a1fe427acf8',
+        'PASSWORD': '73a4dddf',
+        'HOST': 'us-cdbr-iron-east-04.cleardb.net',
         'PORT': '3306',
     }
 }

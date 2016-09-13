@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -85,17 +86,17 @@ WSGI_APPLICATION = 'PPAP_Online.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_0a213897d393ee6',
-        'USER': 'bb3a1fe427acf8',
-        'PASSWORD': '73a4dddf',
-        'HOST': 'us-cdbr-iron-east-04.cleardb.net',
-        'PORT': '3306',
-    }
-}
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'heroku_0a213897d393ee6',
+#         'USER': 'bb3a1fe427acf8',
+#         'PASSWORD': '73a4dddf',
+#         'HOST': 'us-cdbr-iron-east-04.cleardb.net',
+#         'PORT': '3306',
+#     }
+# }
+DATABASES['default'] = dj_database_url.config()
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

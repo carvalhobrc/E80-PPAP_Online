@@ -1,0 +1,7 @@
+{% extends "main/side-menu.html" %}
+
+{% block content %}
+    {% for item in object_list %}
+	    {{ item.code }}<a href="//{{item.code}}"> {{item.supplier}}</a> {{item.description}} <br>
+	{% endfor %}
+{% endblock %}

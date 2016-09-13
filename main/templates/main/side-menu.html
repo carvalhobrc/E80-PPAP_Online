@@ -1,0 +1,64 @@
+﻿{% extends 'main/main.html' %}
+
+{% block main-content %}
+    <div id="wrapper" style="margin-top: 80px;">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper" style="overflow-x: hidden;"> <!-- "div" do menu lateral - (hidden) Oculta a barra de scroll em X -->
+
+            <!-- Content-list -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="http://127.0.0.1:8000/certification/overview/">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                <a href="http://127.0.0.1:8000/auth/logout">Logout</a>
+                </li>
+                <li>
+                <a href="http://127.0.0.1:8000/certification/overview/">Certification</a>
+                </li>
+                <li>
+                <a href="http://127.0.0.1:8000/certification/">New Certification</a>
+                </li>
+            </ul>
+            <!-- /Content-list -->
+
+        </div>
+        <!-- /Sidebar -->
+
+        <!-- Page content -->
+        <div id="page-content-wrapper" style="padding: 0px;">
+
+            <!-- Botão - ocultar o menu lateral -->
+            <button id="menu-toggle" class="side-menu-button-bar"><span id="side-menu-button" class="glyphicon glyphicon-chevron-left"></span></button>
+            <!-- /Botão -->
+
+            <div class="container-fluid" style="padding-left: 50px;">
+
+                <!-- Python content -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                </div>
+                <!-- /Python content -->
+
+            </div>
+        </div>
+        <!-- /Page content-->
+
+    </div>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        $("#side-menu-button").toggleClass("glyphicon-chevron-right");
+    });
+    </script>
+{% endblock %}

@@ -1,0 +1,12 @@
+﻿{% extends 'main/base.html' %}
+
+{% block base-header %}
+    <div style="color: #008791;font-size: small; margin-left: 10px;">
+        <b>Supplier: </b>{{ user.get_full_name }}<br>
+    </div>
+{% endblock %}
+
+{% block base-content %}
+    {% block main-content %}
+    {% endblock %}
+{% endblock %}

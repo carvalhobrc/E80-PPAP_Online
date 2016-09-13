@@ -1,0 +1,16 @@
+﻿{% extends 'main/side-menu.html' %}
+
+{% block content %}
+    <form action="/certification/" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-ppap-form"  value="Submit" />
+    </form>
+    <input type="button" id="startTourBtn" class="btn btn-default" value="HELP!"/>
+
+	{% load staticfiles %}
+
+    <!-- define your tour in this file -->
+    <script src="{% static 'js/certification-help.js' %}"></script>
+
+{% endblock %}

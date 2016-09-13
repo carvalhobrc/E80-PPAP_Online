@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PPAP - Embraco</title>
+
+    <!-- Bootstrap CSS -->
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type = "text/css"/>
+
+    <!-- Sidebar CSS -->
+    <link rel="stylesheet" href="{% static 'css/ppap-sidebar.css' %}">
+
+    <!-- Templates CSS -->
+    <link rel="stylesheet" href="{% static 'css/ppap-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cores-embraco/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cores-embraco/backgrounds.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cores-embraco/borders.css' %}">
+
+    <!--Apps CSS -->
+    <link rel="stylesheet" href="{% static 'css/hopscotch.css' %}"></link>
+    <link rel="stylesheet" href="{% static 'css/ppap-form-edit.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/certification-overview.css' %}">
+
+    <!-- Bootstrap Scripts -->
+    <script src="{% static 'js/bootstrap.js' %} "></script>
+    <script src="{% static 'js/bootstrap.min.js' %} "></script>
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.js' %} "></script>
+
+     <!--Custom Scripts -->
+    <script src="{% static 'js/hopscotch.js' %}"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    [endif]-->
+
+</head>
+
+<body>
+    <!-- Complete page -->
+    <div class="ppap-header"><p class="ppap-header-text">PPAP - Embraco</p></div>
+    <div class="ppap-header-space">
+        {% block base-header %}
+        {% endblock %}
+    </div>
+    <img class="header-img" src="{% static 'img/logo-embraco.jpg' %}" alt="Embraco">
+    <div class="header-color-bar header-color-bar-1"></div>
+    <div class="header-color-bar header-color-bar-2"></div>
+    <div class="header-color-bar header-color-bar-3"></div>
+    <div class="header-color-bar header-color-bar-4"></div>
+    <div class="header-color-bar header-color-bar-5"></div>
+
+    <div style="margin-top: 80px;">
+        {% block base-content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        <div class="ppap-footer">
+            <p class="ppap-footer-text">Embraco ® Todos os direitos reservados | Desenvolvido por NEO Empresarial</p>
+        </div>
+    </footer>
+    <!-- /Complete Page -->
+</body>
+
+</html>

@@ -17,7 +17,7 @@ class SupplierProfile(models.Model):
     address = models.CharField(max_length=50, default='')
     country = models.CharField(max_length=15, default='')
     contactPerson = models.CharField(max_length=50,default='')
-    phoneNumber = models.CharField(max_length=15, default='+00 00 0000 0000')
+    phoneNumber = models.CharField(max_length=20, default='+00 00 0000 0000')
 
     def __str__(self):
         return self.supplierCode + " - " + self.user.first_name + " " + self.user.last_name

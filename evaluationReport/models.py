@@ -10,7 +10,7 @@ class EvaluationReport(models.Model):
 
 class GroupOfCharacteristics(models.Model):
     evaluationreport = models.ForeignKey(EvaluationReport, on_delete=models.CASCADE)
-    group_name = models.CharField(max_length=50, default='-')
+    group_name = models.CharField(max_length=50, default='')
 
     def __str__(self):
         return self.group_name
@@ -18,10 +18,10 @@ class GroupOfCharacteristics(models.Model):
 class Characteristics(models.Model):
     evaluationreport = models.ForeignKey(EvaluationReport, on_delete=models.PROTECT)
     group = models.ForeignKey(GroupOfCharacteristics, on_delete=models.SET_NULL, null=True)
-    characteristic = models.CharField(max_length=40, default='-')
-    coordinates = models.CharField(max_length=4, default='-')
-    type = models.CharField(max_length=5, default='-')
-    limits_type = models.CharField(max_length=20, default='-')
+    characteristic = models.CharField(max_length=40, default='')
+    coordinates = models.CharField(max_length=4, default='')
+    type = models.CharField(max_length=5, default='')
+    limits_type = models.CharField(max_length=20, default='')
     nominalValue = models.FloatField(default=0)
     lower_limit = models.FloatField(default=0)
     upper_limit = models.FloatField(default=0)
@@ -34,7 +34,7 @@ class Characteristics(models.Model):
 class Evaluation(models.Model):
     characteristic = models.ForeignKey(Characteristics, on_delete=models.PROTECT)
     evaluation_number = models.IntegerField(default=0)
-    responsible = models.CharField(max_length=50,default='-')
+    responsible = models.CharField(max_length=50,default='')
 
     def __str__(self):
         return "Evaluation " + self.evaluation_number

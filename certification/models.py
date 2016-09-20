@@ -5,10 +5,10 @@ class Certification(models.Model):
     supplier = models.ForeignKey(SupplierProfile, on_delete=models.CASCADE)
     responsible = models.ForeignKey(EmbracoProfile, on_delete=models.CASCADE)
     code = models.CharField(max_length=140, default='0000')
-    product_description = models.CharField(max_length=140, default='-')
+    product_description = models.CharField(max_length=140, default='')
     revision_ECM = models.IntegerField(default=0)
     revision_last = models.DateField(default=0)
-    planned_steps = models.CharField(max_length=140, default='-')
+    planned_steps = models.CharField(max_length=140, default='')
     date = models.DateField(default=0)
     closed = models.BooleanField(default=False)
 
@@ -16,7 +16,7 @@ class Certification(models.Model):
         return self.code
 
 class Documents(models.Model):
-    document_name = models.CharField(max_length=140, default='-')
+    document_name = models.CharField(max_length=140, default='')
 
     def __str__(self):
         return self.document_name
@@ -38,8 +38,8 @@ class CertificationApproval(models.Model):
 
 class MeasurementSystem(models.Model):
     supplier = models.ForeignKey(SupplierProfile, on_delete=models.PROTECT)
-    name = models.CharField(max_length=140, default='-')
-    unit = models.CharField(max_length=140, default='-')
+    name = models.CharField(max_length=140, default='')
+    unit = models.CharField(max_length=140, default='')
     measurable = models.BooleanField(default=False)
     resolution = models.FloatField(default=0)
     percentualRnR = models.FloatField(default=0)

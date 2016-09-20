@@ -1,14 +1,24 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect
+from authentication.models import *
+from django.http import HttpResponseRedirect, HttpResponse
 
 def userLogin(request):
     if request.method == 'POST':
         username = request.POST['inputName']
         password = request.POST['inputPassword']
         user = authenticate(username=username, password=password)
+
         if user is not None:
             login(request, user)
+            #Verify if user is Embraco's employee
+            embraco_user = EmbracoProfile.objects.get(user=user.id)
+            if embraco_user: #If is Embraco's user
+                request.session['user_type'] = 'Embraco'
+                request.session['']
+            else:
+                supplier_user = SupplierProfile.objects.get(user=user.id)
+                request.session['user_type'] = 'Supplier'
             if 'next' in request.GET:
                 return HttpResponseRedirect(request.GET['next'])
             else:

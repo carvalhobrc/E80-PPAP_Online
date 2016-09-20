@@ -6,6 +6,5 @@ from authentication.models import EmbracoProfile
 urlpatterns = [
     url(r'^$',views.login, name='login'),
     url(r'^login/$',views.userLogin, name='login'),
-    url(r'^logout/$',views.userLogout, name='logout'),
-    url(r'^(?P<pk>\d+)$', DetailView.as_view(model=EmbracoProfile))
+    url(r'^logout/$', views.userLogout, name='logout'),
 ]

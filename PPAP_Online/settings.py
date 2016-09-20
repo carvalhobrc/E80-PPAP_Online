@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'hfcRiskMap',
     'processFMEA',
     'appendedDocuments',
+    'manageUsers',
 ]
 
 MIDDLEWARE_CLASSES = [

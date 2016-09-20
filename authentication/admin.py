@@ -1,5 +1,5 @@
-from django.contrib import admin
+import django.contrib
 from authentication.models import EmbracoProfile, SupplierProfile
 
-admin.site.register(EmbracoProfile)
-admin.site.register(SupplierProfile)
+django.contrib.admin.site.register(EmbracoProfile)
+django.contrib.admin.site.register(SupplierProfile)

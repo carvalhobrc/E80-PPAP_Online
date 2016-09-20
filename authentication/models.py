@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 class EmbracoProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phoneNumber = models.CharField(max_length=20, default='+00 00 0000 0000')
-    department = models.CharField(max_length=50, default='-')
-    jobTitle = models.CharField(max_length=50, default='-')
+    department = models.CharField(max_length=50, default='')
+    jobTitle = models.CharField(max_length=50, default='')
     is_administrator = models.BooleanField(default=False)
 
     def __str__(self):

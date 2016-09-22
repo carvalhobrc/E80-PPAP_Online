@@ -11,13 +11,18 @@ def userLogin(request):
 
         if user is not None:
             login(request, user)
-            #Verify if user is Embraco's employee
+
+            #Verify user type: Supplier or Embraco's user
             embraco_user = EmbracoProfile.objects.get(user=user.id)
-            if embraco_user: #If is Embraco's user
+            supplier_user = EmbracoProfile.objects.get(user=user.id)
+            if embraco_user: #If it's Embraco's user
                 request.session['user_type'] = 'Embraco'
-            else:
-                supplier_user = SupplierProfile.objects.get(user=user.id)
+            elif supplier_user: #If it's a Supplier's user
                 request.session['user_type'] = 'Supplier'
+            else:
+                request.session['user_type'] = 'Undefined'
+            #End user type verification
+
             if 'next' in request.GET:
                 return HttpResponseRedirect(request.GET['next'])
             else:

@@ -15,7 +15,6 @@ def userLogin(request):
             embraco_user = EmbracoProfile.objects.get(user=user.id)
             if embraco_user: #If is Embraco's user
                 request.session['user_type'] = 'Embraco'
-                request.session['']
             else:
                 supplier_user = SupplierProfile.objects.get(user=user.id)
                 request.session['user_type'] = 'Supplier'

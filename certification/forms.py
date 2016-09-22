@@ -16,10 +16,13 @@ class CertificationForm(forms.ModelForm):
         ]
         widgets = {
             "supplier": forms.Select(attrs={'class': 'form-control ppap-form-field'}),
+            "responsible": forms.Select(attrs={'class':'form-control ppap-form-field'}),
             "code": forms.NumberInput(attrs={'class': 'form-control ppap-form-field', 'min': 0}),
-            "description": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
+            "product_description": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
             "revision_ECM": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
             "revision_last": forms.TextInput(attrs={'type':'date', 'class': 'form-control ppap-form-field'}),
+            "planned_steps": forms.TextInput(attrs={'class':'form-control ppap-form-field'}),
+            "date":forms.TextInput(attrs={'class':'form-control ppap-form-field'}),
         }
 
 

@@ -1,7 +1,58 @@
 {% extends "main/side-menu.html" %}
 
 {% block content %}
-    {% for item in object_list %}
-	    {{ item.code }}<a href="//{{item.code}}"> {{item.supplier}}</a> {{item.description}} <br>
-	{% endfor %}
+{% load staticfiles %}
+<head>
+	<title>Procurement Embraco</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="{% static 'css/certification-list.css' %}">
+	 <script src="{% static 'js/certification-list.js' %}"></script>
+</head>
+
+<body>
+
+	<div class="tableBox" id="centerBox">
+		<h3 id="main_heading">Selecione a certificação que deseja obter mais informações:</h3>
+		<br>
+		<br>
+		<div id="searchBox">
+			<h4 class="normaltext">Pesquise por palavra-chave:</h4>
+			<div style="margin-top: 1%" class="form-group pull-right">
+			<input type="text" class="search form-control" placeholder="Digite a palavra aqui">
+		</div>
+            <br>
+	</div>
+		<br>
+		<table class="table results">
+		  <thead>
+			<tr class="color1">
+			  <th>Código</th>
+			  <th>Fornecedor</th>
+			  <th>Descrição</th>
+			  <th>Data</th>
+			</tr>
+          <br>
+          <br>
+		  </thead>
+		  <tbody>
+          {% for item in object_list %}
+			<tr id="rowcolor">
+			  <td>{{ item.code }}</td>
+			  <td><a href="//127.0.0.1:8000/certification/certification-list/{{item.code}}"> {{item.supplier}}</a></td>
+			  <td>{{item.product_description}}</td>
+			  <td>{{ item.date }}</td>
+			</tr>
+          {% endfor %}
+		  </tbody>
+		</table>
+
+	</div>
+
+
+</body>
+
 {% endblock %}

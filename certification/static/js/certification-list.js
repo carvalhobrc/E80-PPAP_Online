@@ -1,4 +1,3 @@
-/*
 $(document).ready(function() {
   $(".search").keyup(function () {
     var searchTerm = $(".search").val();
@@ -24,14 +23,4 @@ $(document).ready(function() {
   if(jobCount == '0') {$('.no-result').show();}
     else {$('.no-result').hide();}
 		  });
-});*/
-
-
-var $table = $('#table');
-    $(function () {
-        $('#toolbar').find('select').change(function () {
-            $table.bootstrapTable('refreshOptions', {
-                exportDataType: $(this).val()
-            });
-        });
-    })
+});

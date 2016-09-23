@@ -1,0 +1,54 @@
+.tableBox {
+	height: 400px;
+	background-color: #FFFFFF;
+	top: 2px;
+	float: middle;
+	position: relative;
+}
+
+#centerBox {
+	margin: auto;
+    width: 80%;
+}
+
+.color1 {
+	background-color: #008791;
+	color: white;
+}
+.normaltext {
+	color: #008791;
+	font-size: 16px;
+	font-family: Verdana;
+	display: inline-block;
+}
+#main_heading{
+	color: #008791;
+	font-size: 24px;
+	font-family: Verdana;
+}
+#rowcolor {
+	background-color: #DDEEF4;
+}
+#searchBox {
+	width: 45%;
+	height: 11%;
+	float: left;
+}
+tr th {
+	text-align: center;
+}
+
+
+.results tr[visible='false'],
+.no-result{
+  display:none;
+}
+
+.results tr[visible='true']{
+  display:table-row;
+}
+
+table {
+	text-align: center;
+	font-size:17px;
+}

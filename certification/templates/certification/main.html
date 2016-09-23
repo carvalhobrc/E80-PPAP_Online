@@ -1,43 +1,86 @@
 ﻿{% extends 'main/side-menu.html' %}
 
 {% block content %}
+{% load staticfiles %}
+
     <form action="/certification/" method="post">
         {% csrf_token %}
 
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css'  %}">
+</head>
 
- {% comment %}       <table>
-		  <thead>
-			<tr class="color1">
-			  <th>Código</th>
-			  <th>Fornecedor</th>
-			  <th>Descrição</th>
-			  <th>Data</th>
-			</tr>
-          <br>
-          <br>
-		  </thead>
-		  <tbody>
-          {% for item in object_list %}
-			<tr id="rowcolor">
-			  <td>{{ item.code }}</td>
-			  <td><a href="//127.0.0.1:8000/certification/certification-list/{{item.code}}"> {{item.supplier}}</a></td>
-			  <td>{{item.product_description}}</td>
-			  <td>{{ item.date }}</td>
-			</tr>
-          {% endfor %}
-		  </tbody>
-		</table>
+<body>
+    <div class="tableBox">
+        <h3 id="certification_title">Fill up the information to add a new certification:</h3>
+		<br>
+		<br>
+    	<div class="form-group row">
+    	  <label for="example-text-input" class="col-xs-2 col-form-label" id="embraco_color">Supplier:</label>
+    	  <div class="col-xs-10">
+             {{ form.supplier }}
+    	  </div>
+    	</div>
 
-        Use form.supplier  form.code, etc
-{% endcomment %}
-        {{ form.as_p}}
+        <div class="form-group row">
+    	  <label for="example-text-input" class="col-xs-2 col-form-label" id="embraco_color">Responsible:</label>
+    	  <div class="col-xs-10">
+             {{ form.responsible }}
+    	  </div>
+    	</div>
+
+        <div class="form-group row">
+    	  <label for="example-text-input" class="col-xs-2 col-form-label" id="embraco_color">Code:</label>
+    	  <div class="col-xs-10">
+             {{ form.code}}
+    	  </div>
+    	</div>
+
+        <div class="form-group row">
+    	  <label for="example-text-input" class="col-xs-2 col-form-label" id="embraco_color">Product Description:</label>
+    	  <div class="col-xs-10">
+             {{ form.product_description }}
+    	  </div>
+    	</div>
+
+       <div class="form-group row">
+    	  <label for="example-text-input" class="col-xs-2 col-form-label" id="embraco_color">ECM Revision:</label>
+    	  <div class="col-xs-10">
+             {{ form.revision_ECM }}
+    	  </div>
+    	</div>
+
+       <div class="form-group row">
+    	  <label for="example-text-input" class="col-xs-2 col-form-label" id="embraco_color">Last Revision:</label>
+    	  <div class="col-xs-10">
+             {{ form.revision_last }}
+    	  </div>
+    	</div>
+
+       <div class="form-group row">
+    	  <label for="example-text-input" class="col-xs-2 col-form-label" id="embraco_color">Planned Steps:</label>
+    	  <div class="col-xs-10">
+             {{ form.planned_steps }}
+    	  </div>
+    	</div>
+
+       <div class="form-group row">
+    	  <label for="example-text-input" class="col-xs-2 col-form-label" id="embraco_color">Date:</label>
+    	  <div class="col-xs-10">
+             {{ form.date }}
+    	  </div>
+    	</div>
         <input type="submit" class="btn btn-ppap-form"  value="Submit" />
     </form>
-    <input type="button" id="startTourBtn" class="btn btn-default" value="HELP!"/>
+    <span style="float:right; margin-top:20px;"><input type="button" id="startTourBtn" class="btn btn-default" value="HELP!"/></span>
 
-	{% load staticfiles %}
 
     <!-- define your tour in this file -->
     <script src="{% static 'js/certification-help.js' %}"></script>
+    </div>
 
+</body>
 {% endblock %}

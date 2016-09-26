@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^auth/', include('authentication.urls')),
     url(r'^certification/', include('certification.urls')),
     url(r'^process-map/', include('processMap.urls')),
+    url(r'^manage-users/', include('manageUsers.urls')),
 
 ]

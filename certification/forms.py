@@ -21,7 +21,3 @@ class CertificationForm(forms.ModelForm):
             "revision_ECM": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
             "revision_last": forms.TextInput(attrs={'type':'date', 'class': 'form-control ppap-form-field'}),
         }
-
-
-class TestForm(forms.Form):
-    your_name = forms.CharField(label='Your name', max_length=100)

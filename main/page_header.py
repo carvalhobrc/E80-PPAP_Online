@@ -24,7 +24,7 @@ def get_header_data(request):
                       'header_line1_label': 'Supplier:',
                       'header_line1_value': request.user.get_full_name,
                       'header_line2_label': 'Product:',
-                      'header_line2_value': request.user.embracoprofile.department,
+                      'header_line2_value': request.user.supplierprofile.contactPerson,
                       'header_line3_label': '',
                       'header_line3_value': '',
                       'header_line4_label': '',

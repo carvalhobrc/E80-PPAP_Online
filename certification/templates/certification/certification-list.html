@@ -3,48 +3,46 @@
 {% block content %}
 {% load staticfiles %}
 <head>
-	<title>Procurement Embraco</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="{% static 'css/certification-list.css' %}">
-	 <script src="{% static 'js/certification-list.js' %}"></script>
+    <script src="{% static 'js/certification-list.js' %}"></script>
 </head>
 
 <body>
 
 	<div class="tableBox" id="centerBox">
-		<h3 id="main_heading">Selecione a certificação que deseja obter mais informações:</h3>
-		<br>
-		<br>
+		<h3 id="main_heading">Indexed Certifications:</h3>
+
+    {% comment %}
 		<div id="searchBox">
 			<h4 class="normaltext">Pesquise por palavra-chave:</h4>
 			<div style="margin-top: 1%" class="form-group pull-right">
-			<input type="text" class="search form-control" placeholder="Digite a palavra aqui">
-		</div>
-            <br>
-	</div>
-		<br>
-		<table class="table results">
+			    <input type="text" class="search form-control" placeholder="Digite a palavra aqui">
+		    </div>
+
+	    </div>
+    {% endcomment %}
+		<table class="table results" id="table_style">
 		  <thead>
 			<tr class="color1">
-			  <th>Código</th>
-			  <th>Fornecedor</th>
-			  <th>Descrição</th>
-			  <th>Data</th>
+			  <th data-field="code" data-filter-control="select" data-sorteable="true">Code</th>
+			  <th data-field="supplier" data-filter-control="select" data-sorteable="true">Supplier</th>
+			  <th data-field="date" data-filter-control="select" data-sorteable="true">Date</th>
+              <th>More Information</th>
 			</tr>
           <br>
           <br>
 		  </thead>
-		  <tbody>
+		  <tbody class="scrollContent">
           {% for item in object_list %}
 			<tr id="rowcolor">
-			  <td>{{ item.code }}</td>
-			  <td><a href="//127.0.0.1:8000/certification/certification-list/{{item.code}}"> {{item.supplier}}</a></td>
-			  <td>{{item.product_description}}</td>
-			  <td>{{ item.date }}</td>
+			  <td class="filterable-cell">{{ item.code }}</td>
+			  <td class="filterable-cell">{{item.supplier}}</td>
+			  <td class="filterable-cell">{{ item.date }}</td>
+              <td class="filterable-cell"><a href="/certification/certification-list/{{item.id}}"><input type="button" class="btn btn-default" value="More" /></a></td>
 			</tr>
           {% endfor %}
 		  </tbody>

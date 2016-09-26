@@ -1,7 +1,77 @@
 {% extends "main/side-menu.html" %}
 
-{% block base-content %}
-	<h3>{{certification.title}}</h3>
-	<h6>on {{certification.date}}</h6>
+{% block content %}
+{% load staticfiles %}
+
+   <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/certification.css'  %}">
+</head>
+
+<body>
+
+	<div class="tableBox" id="centerBox">
+		<h3 id="main_heading">Certification code {{ certification.code }} of {{ certification.supplier }}</h3>
+
+
+		<table class="table results" id="table_style">
+		  <thead id="table_style">
+			<tr class="color1">
+			  <th>#</th>
+			  <th>Filled Information</th>
+			</tr>
+          <br>
+          <br>
+		  </thead>
+
+		  <tbody>
+			<tr>
+                <td class="color1">Supplier</td>
+                <td>{{ certification.supplier }}</td>
+            </tr>
+
+            <tr>
+                <td class="color1">Responsible</td>
+                <td>{{ certification.responsible }}</td>
+            </tr>
+
+            <tr>
+                <td class="color1">Code</td>
+                <td>{{ certification.code}}</td>
+            </tr>
+
+            <tr>
+                <td class="color1">Product Description</td>
+                <td>{{ certification.product_description }}</td>
+            </tr>
+
+            <tr>
+                <td class="color1">ECM Revision</td>
+                <td>{{ certification.revision_ECM }}</td>
+            </tr>
+
+            <tr>
+                <td class="color1">Last Revision</td>
+                <td>{{ certification.revision_last }}</td>
+            </tr>
+
+            <tr>
+                <td class="color1">Planned Steps</td>
+                <td>{{ certification.planned_steps }}</td>
+            </tr>
+
+            <tr>
+                <td class="color1">Date</td>
+                <td>{{ certification.date }}</td>
+			</tr>
+		  </tbody>
+		</table>
+
+	</div>
+
+
+</body>
 	{{certification.body|safe|linebreaks}}
 {% endblock %}

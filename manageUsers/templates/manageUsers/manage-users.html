@@ -1,6 +1,25 @@
 ﻿{% extends 'main/side-menu.html' %}
 
 {% block content %}
+    TABELA DE USUÁRIOS
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Full Name</th>
+            <th>Date joined</th>
+        </tr>
+        {% for item in users %}
+        <tr>
+            <td><a href="//manage-users/embraco/{{ item.pk }}">{{ item.id }}</td>
+            <td>{{ item.username }}</td>
+            <td>{{ item.get_full_name }}</td>
+            <td>{{ item.date_joined }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+
     TABELA DE USUÁRIOS DA EMBRACO
     <table>
         <tr>
@@ -9,7 +28,7 @@
         </tr>
         {% for item in embraco_users %}
         <tr>
-            <td><a href="//manage-users/embraco/{{ item.pk }}">{{ item.id }}</td>
+            <td><a href="/manage-users/embraco/{{ item.pk }}">{{ item.id }}</td>
             <td>{{ item }}</td>
             <td>{{ item.department }}</td>
         </tr>
@@ -33,15 +52,5 @@
         </tr>
         {% endfor %}
     </table>
-    <br>
-    <br>
-    <br>
-    <br>
 
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ embraco_user_form.as_p }}
-        <input type="submit">
-    </form>
 {% endblock %}

@@ -1,5 +1,56 @@
 ﻿{% extends 'main/side-menu.html' %}
 
 {% block content %}
-    Content
+    TABELA DE USUÁRIOS
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Full Name</th>
+            <th>Date joined</th>
+        </tr>
+        {% for item in users %}
+        <tr>
+            <td><a href="//manage-users/embraco/{{ item.pk }}">{{ item.id }}</td>
+            <td>{{ item.username }}</td>
+            <td>{{ item.get_full_name }}</td>
+            <td>{{ item.date_joined }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+
+    TABELA DE USUÁRIOS DA EMBRACO
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Area</th>
+        </tr>
+        {% for item in embraco_users %}
+        <tr>
+            <td><a href="/manage-users/embraco/{{ item.pk }}">{{ item.id }}</td>
+            <td>{{ item }}</td>
+            <td>{{ item.department }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+
+
+    TABELA DE FORNECEDORES
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Contact Person</th>
+        </tr>
+        {% for item in supplier_users %}
+        <tr>
+            <td><a href="//manage-users/supplier/{{ item.user.id }}">{{ item.user.id }}</td>
+            <td>{{ item }}</td>
+            <td>{{ item.contactPerson }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
 {% endblock %}

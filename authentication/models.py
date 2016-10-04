@@ -9,7 +9,7 @@ class EmbracoProfile(models.Model):
     is_administrator = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user.first_name + " " + self.user.last_name
+        return self.user.get_full_name()
 
 class SupplierProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -20,4 +20,4 @@ class SupplierProfile(models.Model):
     phoneNumber = models.CharField(max_length=20, default='+00 00 0000 0000')
 
     def __str__(self):
-        return self.user.first_name + " " + self.user.last_name
+        return self.user.get_full_name()

@@ -1,0 +1,16 @@
+.tableBox {
+	height: 400px;
+	background-color: #FFFFFF;
+	top: 20px;
+    margin-left: 5%;
+    margin-right:40%;
+	position: relative;
+}
+
+#certification_title {
+    color: #008791;
+    text-align: left;
+}
+#embraco_color {
+	color: #008791;
+}

@@ -26,7 +26,7 @@ $(document).ready(function() {
 		  });
 });*/
 
-
+/*
 var $table = $('#table');
     $(function () {
         $('#toolbar').find('select').change(function () {
@@ -34,4 +34,4 @@ var $table = $('#table');
                 exportDataType: $(this).val()
             });
         });
-    })
+    })*/

@@ -1,5 +1,5 @@
-.tableBox {
-	height: 400px;
+.infoTableBox{
+	height: 400ablepx;
 	background-color: #FFFFFF;
 	top: 20px;
 	margin-left: 5%;
@@ -7,7 +7,7 @@
 	position: relative;
 }
 
-#centerBox {
+#infoCenterBox {
 
     width: 50%;
 }

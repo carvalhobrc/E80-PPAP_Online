@@ -2,15 +2,13 @@
 
 {% block content %}
 {% load staticfiles %}
-<head>
+
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/form-list.css' %}">
-</head>
 
-<body>
 
 	<div class="tableBox" id="centerBox">
 		<h3 id="main_heading">Indexed Certifications:</h3>
@@ -24,7 +22,7 @@
 
 	    </div>
     {% endcomment %}
-		<table class="table results" id="table_style">
+		<table class="table results">
 		  <thead>
 			<tr class="color1">
 			  <th data-field="code" data-filter-control="select" data-sorteable="true">Code</th>
@@ -37,19 +35,15 @@
 		  </thead>
 		  <tbody class="scrollContent">
           {% for item in object_list %}
-			<tr id="rowcolor">
+			<tr class="table_row_style" id="rowcolor">
 			  <td class="filterable-cell">{{ item.code }}</td>
 			  <td class="filterable-cell">{{item.supplier}}</td>
 			  <td class="filterable-cell">{{ item.date }}</td>
-              <td class="filterable-cell"><a href="/certification/certification-list/{{item.id}}"><input type="button" class="btn btn-default" value="More" /></a></td>
+              <td class="filterable-cell"><a href="/certification/certification-list/{{item.pk}}/"><input type="button" class="btn btn-default" value="More" /></a></td>
 			</tr>
           {% endfor %}
 		  </tbody>
 		</table>
 
 	</div>
-
-
-</body>
-
 {% endblock %}

@@ -30,29 +30,28 @@
 	background-color: #DDEEF4;
 }
 
-!*#searchBox {
+/*#searchBox {
 	width: 45%;
 	height: 11%;
 	float: left;
-}*!
+}*/
 
 tr th {
 	text-align: center;
 }
 
 
-!*.results tr[visible='false'],
+/*.results tr[visible='false'],
 .no-result{
   display:none;
 }
 
 .results tr[visible='true']{
   display:table-row;
-}*!
+}*/
 
-#table_style {
+.table_row_style {
 	text-align: center;
-	font-size:17px;
 }
 
 thead, tbody, tr, td, th { display: block; }

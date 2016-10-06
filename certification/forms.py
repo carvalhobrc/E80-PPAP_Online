@@ -1,5 +1,6 @@
 from django import forms
 from .models import Certification
+from django.contrib.admin.widgets import AdminDateWidget
 
 class CertificationForm(forms.ModelForm):
     class Meta:
@@ -20,9 +21,11 @@ class CertificationForm(forms.ModelForm):
             "code": forms.NumberInput(attrs={'class': 'form-control ppap-form-field', 'min': 0}),
             "product_description": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
             "revision_ECM": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
+            #"revision_last": forms.SelectDateWidget(attrs={'style': 'width: 32.8%; display: inline-block;','class': 'form-control ppap-form-field'}),
             "revision_last": forms.TextInput(attrs={'type':'date', 'class': 'form-control ppap-form-field'}),
-            "planned_steps": forms.TextInput(attrs={'class':'form-control ppap-form-field'}),
-            "date":forms.TextInput(attrs={'class':'form-control ppap-form-field'}),
+            "planned_steps": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
+            #"date":forms.SelectDateWidget(attrs={'style': 'width: 32.8%; display: inline-block;','class':'form-control ppap-form-field'}),
+            "date": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
         }
 
 

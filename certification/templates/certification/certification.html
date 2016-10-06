@@ -3,16 +3,13 @@
 {% block content %}
 {% load staticfiles %}
 
-   <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/certification.css'  %}">
-</head>
 
-<body>
 
-	<div class="=infoTableBox" id="infoCenterBox">
+	<div class="infoTableBox" id="infoCenterBox">
 		<h3 id="main_heading">Certification code {{ certification.code }} of {{ certification.supplier }}</h3>
 
 
@@ -69,9 +66,10 @@
 		  </tbody>
 		</table>
 
+        <a href="/certification/certification-list"><input type="button" class="btn btn-default" value="Back to List" /></a>
+        <a href="edit"><span style="float:right;"><input type="button" class="btn btn-default" value="Edit" /></span></a>
+
 	</div>
 
-
-</body>
 	{{certification.body|safe|linebreaks}}
 {% endblock %}

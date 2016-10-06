@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-
 from .forms import CertificationForm
+from .models import Certification
 
 @login_required(login_url='/auth/login/')
 def index(request):
@@ -23,22 +23,18 @@ def index(request):
     return render(request, 'certification/main.html', { "form": form })
 
 
-#@login_required(login_url='/auth/login/')
-#def editCertification(request, pk, template_name = 'certification/certification_edit.html'):
-#    instance = User.objects.get(id=pk)
-#    user_form = UserForm(request.POST or None, instance=instance)
-#    embraco_user_form = EmbracoUserForm(request.POST or None, instance=instance.embracoprofile)
-#    if request.method == 'POST':
-#        # check whether it's valid:dj
-#        if user_form.is_valid() and embraco_user_form.is_valid():
-#            # process the data in form.cleaned_data as required
-#            updated_user = user_form.save()
-#            updated_embraco_user = embraco_user_form.save(commit=False)
-#            updated_embraco_user.user = updated_user
-#            updated_embraco_user.save()
-#            # redirect to a new URL:
-#            return HttpResponseRedirect('/manage-users/')
-#    return render(request, template_name, { "user_form": user_form , "embraco_user_form": embraco_user_form,})
+@login_required(login_url='/auth/login/')
+def editCertification(request, pk, template_name = 'certification/main.html'):
+    instance = Certification.objects.get(id=pk)
+    form = CertificationForm(request.POST or None, instance=instance)
+    if request.method == 'POST':
+        # check whether it's valid:dj
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # redirect to a new URL:
+            form.save()
+            return HttpResponseRedirect("/certification/certification-list/" + str(instance.id))
+    return render(request, template_name, { "form": form })
 
 
 def overview(request):

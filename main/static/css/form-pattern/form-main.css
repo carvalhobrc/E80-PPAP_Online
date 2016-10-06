@@ -1,4 +1,4 @@
-.tableBox {
+.formsBox {
 	height: 400px;
 	background-color: #FFFFFF;
 	top: 20px;
@@ -7,10 +7,7 @@
 	position: relative;
 }
 
-#certification_title {
+#forms_title {
     color: #008791;
     text-align: left;
-}
-#embraco_color {
-	color: #008791;
 }

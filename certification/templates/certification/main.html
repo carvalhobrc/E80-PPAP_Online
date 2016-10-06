@@ -3,16 +3,12 @@
 {% block content %}
 {% load staticfiles %}
 
-    <form action="/certification/" method="post">
-        {% csrf_token %}
-
-<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
 
-<body>
+    <form method="post">
+        {% csrf_token %}
     <div class="formsBox">
         <h3 id="forms_title">Fill up the information to add a new certification:</h3>
 		<br>
@@ -81,5 +77,4 @@
     <script src="{% static 'js/certification-help.js' %}"></script>
     </div>
 
-</body>
 {% endblock %}

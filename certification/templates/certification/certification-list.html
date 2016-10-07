@@ -8,11 +8,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/form-list.css' %}">
+    <script src="{%  static 'js/form-list.js' %}"></script>
 
-
-	<div class="tableBox" id="centerBox">
-		<h3 id="main_heading">Indexed Certifications:</h3>
-
+	<div class="tableBox filterable" id="centerBox">
+		    <h3 id="main_heading">Indexed Certifications:</h3>
+            <h3 class="normaltext">Click on the button beside to filter information by column:  </h3>
+            <button class="btn btn-default btn-sm btn-filter" id ="space_from_text"><span class="glyphicon glyphicon-filter"></span> Filter</button>
     {% comment %}
 		<div id="searchBox">
 			<h4 class="normaltext">Pesquise por palavra-chave:</h4>
@@ -22,28 +23,30 @@
 
 	    </div>
     {% endcomment %}
-		<table class="table results">
-		  <thead>
-			<tr class="color1">
-			  <th data-field="code" data-filter-control="select" data-sorteable="true">Code</th>
-			  <th data-field="supplier" data-filter-control="select" data-sorteable="true">Supplier</th>
-			  <th data-field="date" data-filter-control="select" data-sorteable="true">Date</th>
-              <th>More Information</th>
-			</tr>
-          <br>
-          <br>
-		  </thead>
-		  <tbody class="scrollContent">
-          {% for item in object_list %}
-			<tr class="table_row_style" id="rowcolor">
-			  <td class="filterable-cell">{{ item.code }}</td>
-			  <td class="filterable-cell">{{item.supplier}}</td>
-			  <td class="filterable-cell">{{ item.date }}</td>
-              <td class="filterable-cell"><a href="/certification/certification-list/{{item.pk}}/"><input type="button" class="btn btn-default" value="More" /></a></td>
-			</tr>
-          {% endfor %}
-		  </tbody>
-		</table>
+            <br>
+            <br>
+            <table class="table">
+                    <thead>
+                        <tr class="color1 filters">
+                            <th><input id="column_style" type="text" class="form-control" placeholder="Code" disabled></th>
+                            <th><input id="column_style" type="text" class="form-control" placeholder="Supplier" disabled></th>
+                            <th><input id="column_style" type="text" class="form-control" placeholder="Date" disabled></th>
+                            <th><input id="column_style" type="text" class="form-control" placeholder="Product Description" disabled></th>
+                            <th><input id="column_style" type="text" class="form-control" placeholder="More Information" disabled></th>
 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in object_list %}
+		            	    <tr class="table_row_style" id="rowcolor">
+                              <td{% comment %} class="filterable-cell"{% endcomment %}>{{ item.code }}</td>
+                              <td{% comment %} class="filterable-cell"{% endcomment %}>{{item.supplier}}</td>
+                              <td{% comment %} class="filterable-cell"{% endcomment %}>{{ item.date }}</td>
+                              <td{% comment %} class="filterable-cell"{% endcomment %}>{{ item.product_description }}</td>
+                              <td{% comment %} class="filterable-cell"{% endcomment %}><a href="/certification/certification-list/{{item.pk}}/"><input type="button" class="btn btn-default" value="More" /></a></td>
+		                	</tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
 	</div>
 {% endblock %}

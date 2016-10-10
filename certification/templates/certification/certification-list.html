@@ -39,11 +39,11 @@
                     <tbody>
                         {% for item in object_list %}
 		            	    <tr class="table_row_style" id="rowcolor">
-                              <td{% comment %} class="filterable-cell"{% endcomment %}>{{ item.code }}</td>
-                              <td{% comment %} class="filterable-cell"{% endcomment %}>{{item.supplier}}</td>
-                              <td{% comment %} class="filterable-cell"{% endcomment %}>{{ item.date }}</td>
-                              <td{% comment %} class="filterable-cell"{% endcomment %}>{{ item.product_description }}</td>
-                              <td{% comment %} class="filterable-cell"{% endcomment %}><a href="/certification/certification-list/{{item.pk}}/"><input type="button" class="btn btn-default" value="More" /></a></td>
+                              <td>{{ item.code }}</td>
+                              <td>{{item.supplier}}</td>
+                              <td>{{ item.date }}</td>
+                              <td>{{ item.product_description }}</td>
+                              <td><a href="/certification/certification-list/{{item.pk}}/"><input type="button" class="btn btn-default" value="More" /></a></td>
 		                	</tr>
                         {% endfor %}
                     </tbody>

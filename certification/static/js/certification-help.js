@@ -17,19 +17,31 @@ var tour = {
     {
       title: "Description",
       content: "Describe the product of the certification",
-      target: "id_description",
+      target: "id_product_description",
       placement: "bottom"
     },
     {
       title: "Revision Number",
       content: "Insert the revision number",
-      target: "id_revision_number",
+      target: "id_revision_ECM",
       placement: "bottom"
     },
     {
       title: "Revision Last",
       content: "Insert the date of the last revision",
       target: "id_revision_last",
+      placement: "bottom"
+    },
+    {
+      title: "Planned Steps",
+      content: "Insert the number of planned steps",
+      target: "id_planned_steps",
+      placement: "bottom"
+    },
+    {
+      title: "Date",
+      content: "Insert the date of the certification",
+      target: "id_date",
       placement: "bottom"
     },
   ]
@@ -62,11 +74,11 @@ init = function() {
       mgr.createCallout({
         id: calloutId,
         target: startBtnId,
-        placement: 'right',
+        placement: 'left',
         title: 'Take an example tour',
         content: 'In case of doubts click here!',
-        arrowOffset: 'left',
-        width: 240
+        arrowOffset: '-1.5px',
+        width: 200
       });
     }, 100);
   }

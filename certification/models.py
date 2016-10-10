@@ -10,6 +10,7 @@ class Certification(models.Model):
     revision_last = models.DateField(default=0)
     planned_steps = models.CharField(max_length=140, default='')
     date = models.DateField(default=0)
+    submission_reason = models.CharField(max_length=140, default='')
     closed = models.BooleanField(default=False)
 
     def __str__(self):

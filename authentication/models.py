@@ -1,4 +1,4 @@
-from django.db import models
+pip instafrom django.db import models
 from django.contrib.auth.models import User
 
 class EmbracoProfile(models.Model):

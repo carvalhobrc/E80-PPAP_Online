@@ -1,24 +1,38 @@
 ﻿{% extends 'main/side-menu.html' %}
 
 {% block content %}
-    TABELA DE USUÁRIOS
-    <table>
-        <tr>
-            <th>Username</th>
-            <th>Full Name</th>
-            <th>Date joined</th>
-        </tr>
-        {% for item in users %}
-        <tr>
-            <td><a href="//manage-users/embraco/{{ item.pk }}">{{ item.id }}</td>
-            <td>{{ item.username }}</td>
-            <td>{{ item.get_full_name }}</td>
-            <td>{{ item.date_joined }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <br>
-    <br>
+
+{% load staticfiles %}
+
+    <link rel="stylesheet" href="{% static 'css/form-list.css' %}">
+    <script src="{%  static 'js/form-list.js' %}"></script>
+
+	<div class="tableBox filterable" id="centerBox">
+		    <h3 id="main_heading">Indexed Certifications:</h3>
+            <h3 class="normaltext">Click on the button beside to filter information by column:  </h3>
+            <button class="btn btn-default btn-sm btn-filter" id ="space_from_text"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+            <br>
+            <br>
+            <table class="table">
+                    <thead>
+                        <tr class="color1 filters">
+                            <th><input id="column_style" type="text" class="form-control" placeholder="Name" disabled></th>
+                            <th><input id="column_style" type="text" class="form-control" placeholder="Department" disabled></th>
+                            <th><input id="column_style" type="text" class="form-control" placeholder="More Information" disabled></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in embraco_users %}
+		            	    <tr class="table_row_style" id="rowcolor">
+                                <td>{{ item }}</td>
+                                <td>{{ item.department }}</td>
+                                <td><a href="/manage-users/embraco/{{ item.pk }}"><input type="button" class="btn btn-default" value="More" /></a></td>
+		                	</tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+	</div>
 
     TABELA DE USUÁRIOS DA EMBRACO
     <table>

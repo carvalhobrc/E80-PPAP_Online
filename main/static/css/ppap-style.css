@@ -114,3 +114,14 @@
     border-bottom: none;
     border-left: 1px solid #fff;
 }
+
+.ppap-base-div {
+    height: calc(100% - 130px);
+}
+
+.ppap-content-div {
+    margin-top: 80px;
+    margin-bottom: 30px;
+    height: 100%;
+    overflow-y: auto;
+}

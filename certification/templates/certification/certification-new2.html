@@ -1,0 +1,40 @@
+﻿{% extends 'main/side-menu.html' %}
+
+{% block content %}
+{% load staticfiles %}
+
+    <form method="post">
+        {% csrf_token %}
+    <div class="formsBox">
+        <h3 id="forms_title">Fill up the information to add a new certification:</h3>
+		<br>
+		<br>
+
+        <div class="form-group row">
+    	    <label for="example-text-input" class="col-xs-3.5 col-form-label, embraco-font-dark-green">First Option:</label>
+            <input type="checkbox" name="firstitem" value='Banana'>
+    	</div>
+
+
+        <div class="form-group row">
+    	    <label for="example-text-input" class="col-xs-3.5 col-form-label, embraco-font-dark-green">Second Option:</label>
+            <input type="checkbox" name="seconditem" value="Potato">
+    	</div>
+{% comment %}
+        <div class="form-group row">
+    	    <label for="example-text-input" class="col-xs-3.5 col-form-label, embraco-font-dark-green">Third Option:</label>
+            <input type="checkbox" name="thirditem" value="Banana">
+    	</div>
+{% endcomment %}
+
+
+        <input type="submit" class="btn btn-ppap-form"  value="Submit" />
+    </form>
+{% comment %}    <span style="float:right; margin-top:20px;"><input type="button" id="startTourBtn" class="btn btn-default" value="HELP!"/></span>
+
+
+    <!-- define your tour in this file -->
+    <script src="{% static 'js/certification-help.js' %}"></script>{% endcomment %}
+    </div>
+
+{% endblock %}

@@ -1,8 +1,12 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+import datetime
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .forms import CertificationForm
+from .forms import DocumentsForm
 from .models import Certification
+from .models import Documents
 
 @login_required(login_url='/auth/login/')
 def index(request):
@@ -13,18 +17,18 @@ def index(request):
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
-            form.save()
+            variable = form.save()
             # redirect to a new URL:
-            return HttpResponseRedirect('certification-list/')
+            return HttpResponseRedirect('/certification/new/' + str(variable.pk))
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = CertificationForm()
-    return render(request, 'certification/main.html', { "form": form })
+    return render(request, 'certification/certification-new.html', {"form": form})
 
 
 @login_required(login_url='/auth/login/')
-def editCertification(request, pk, template_name = 'certification/main.html'):
+def editCertification(request, pk, template_name = 'certification/certification-new.html'):
     instance = Certification.objects.get(id=pk)
     form = CertificationForm(request.POST or None, instance=instance)
     if request.method == 'POST':
@@ -35,6 +39,31 @@ def editCertification(request, pk, template_name = 'certification/main.html'):
             form.save()
             return HttpResponseRedirect("/certification/certification-list/" + str(instance.id))
     return render(request, template_name, { "form": form })
+
+
+def documentsView(request, pk):
+
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        formtest = DocumentsForm(request.POST)
+        # check whether it's valid:
+        if formtest.is_valid():
+            # process the data in form.cleaned_data as required
+            firstitem = request.POST.get('firstitem', '')
+            seconditem = request.POST.get('seconditem', '')
+            item_obj = Documents(document_name=firstitem)
+            item_obj.save()
+            item_obj2 = Documents(document_name=seconditem)
+#            if item_obj2 != '':
+#               item_obj2.save()
+
+            return HttpResponseRedirect('/certification')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        formtest = DocumentsForm()
+    return render(request, 'certification/certification-new2.html', {"form": formtest})
 
 
 def overview(request):

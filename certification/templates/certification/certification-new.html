@@ -3,11 +3,8 @@
 {% block content %}
 {% load staticfiles %}
 
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <script>
     $(document).ready(function() {
@@ -76,8 +73,24 @@
              {{ form.date }}
     	  </div>
     	</div>
-        <input type="submit" class="btn btn-ppap-form"  value="Submit" />
+
+       <div class="form-group row">
+    	  <label for="example-text-input" class="col-xs-2 col-form-label, embraco-font-dark-green">Submission Reason:</label>
+    	  <div class="col-xs-10">
+             {{ form.submission_reason }}
+    	  </div>
+    	</div>
+
+{% comment %}       <div class="form-group row">
+    	  <label for="example-text-input" class="col-xs-2 col-form-label, embraco-font-dark-green">Other Reason:</label>
+    	  <div class="col-xs-10">
+             {{ form.submission_reason_other }}
+    	  </div>
+    	</div>{% endcomment %}
+
+        <input type="submit" class="btn btn-ppap-form"  value="Next" />
     </form>
+
     <span style="float:right; margin-top:20px;"><input type="button" id="startTourBtn" class="btn btn-default" value="HELP!"/></span>
 
 

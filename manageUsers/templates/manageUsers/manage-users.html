@@ -8,7 +8,16 @@
     <script src="{%  static 'js/form-list.js' %}"></script>
 
 	<div class="tableBox filterable" id="centerBox">
-		    <h3 id="main_heading">Indexed Certifications:</h3>
+        <h3 id="main_heading">Manage Users</h3>
+        <form method="post" action="">
+            {% csrf_token %}
+            {% if embraco_users_enabled %}
+                <button type="submit" class="btn btn-default" name="action" value="list_embraco_users">Manage Embraco's users</button>
+            {% endif %}
+            <button type="submit" class="btn btn-default" name="action" value="list_supplier_users">Manage Suppliers</button>
+        </form>
+
+        {% if user_list_type %}
             <h3 class="normaltext">Click on the button beside to filter information by column:  </h3>
             <button class="btn btn-default btn-sm btn-filter" id ="space_from_text"><span class="glyphicon glyphicon-filter"></span> Filter</button>
             <br>
@@ -23,15 +32,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for item in embraco_users %}
-		            	    <tr class="table_row_style" id="rowcolor">
-                                <td>{{ item }}</td>
-                                <td>{{ item.department }}</td>
-                                <td><a href="/manage-users/embraco/{{ item.pk }}"><input type="button" class="btn btn-default" value="More" /></a></td>
-		                	</tr>
+                        {% for user in user_list %}
+                            <tr class="table_row_style" id="rowcolor">
+                                <td>{{ user }}</td>
+                                <td>{{ user.department }}</td>
+                                <td><a href="/manage-users/embraco/{{ user.pk }}"><input type="button" class="btn btn-default" value="More" /></a></td>
+                            </tr>
                         {% endfor %}
                     </tbody>
             </table>
+        {% endif %}
 	</div>
 
     TABELA DE USUÁRIOS DA EMBRACO

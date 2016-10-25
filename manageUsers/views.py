@@ -6,17 +6,24 @@ from django.views import View
 
 @login_required(login_url='/auth/login/')
 def manageUsers(request):
-    if request.session['user_type'] == 'Embraco':
-        embraco_users = EmbracoProfile.objects.all()
+    embraco_users_enabled = request.session['user_type'] == 'Embraco'
+    if request.method == 'POST':
+        action = request.POST['action']
+        if action=='list_embraco_users':
+            user_list_type='embraco'
+            user_list = EmbracoProfile.objects.all()
+        elif action=='list_supplier_users':
+            user_list_type='supplier'
+            user_list = SupplierProfile.objects.all()
     else:
-        embraco_users = None
-    supplier_users = SupplierProfile.objects.all()
-
+        user_list_type = None
+        user_list = None
     return render(request,
                   'manageUsers/manage-users.html',
                   {
-                      "embraco_users": embraco_users,
-                      "supplier_users": supplier_users,
+                      "embraco_users_enabled": embraco_users_enabled,
+                      "user_list_type": user_list_type,
+                      "user_list": user_list,
                   })
 
 @login_required(login_url='/auth/login/')

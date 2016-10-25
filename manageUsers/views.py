@@ -28,9 +28,9 @@ def manageUsers(request):
 
 @login_required(login_url='/auth/login/')
 def editEmbracoUser(request, pk, template_name = 'manageUsers/embraco_user_edit.html'):
-    instance = User.objects.get(id=pk)
-    user_form = UserForm(request.POST or None, instance=instance)
-    embraco_user_form = EmbracoUserForm(request.POST or None, instance=instance.embracoprofile)
+    instance = EmbracoProfile.objects.get(id=pk)
+    user_form = UserForm(request.POST or None, instance=instance.user)
+    embraco_user_form = EmbracoUserForm(request.POST or None, instance=instance)
     if request.method == 'POST':
         # check whether it's valid:dj
         if user_form.is_valid() and embraco_user_form.is_valid():
@@ -45,9 +45,9 @@ def editEmbracoUser(request, pk, template_name = 'manageUsers/embraco_user_edit.
 
 @login_required(login_url='/auth/login/')
 def editSupplierUser(request, pk, template_name = 'manageUsers/supplier_user_edit.html'):
-    instance = User.objects.get(id=pk)
-    user_form = UserForm(request.POST or None, instance=instance)
-    supplier_user_form = SupplierUserForm(request.POST or None, instance=instance.supplierprofile)
+    instance = SupplierProfile.objects.get(id=pk)
+    user_form = UserForm(request.POST or None, instance=instance.user)
+    supplier_user_form = SupplierUserForm(request.POST or None, instance=instance)
     if request.method == 'POST':
         # check whether it's valid:dj
         if user_form.is_valid() and supplier_user_form.is_valid():

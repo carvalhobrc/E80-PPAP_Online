@@ -20,11 +20,16 @@ class EmbracoUserForm(forms.ModelForm):
             "department",
             "jobTitle",
             "phoneNumber",
+            "is_administrator",
         ]
 
 class SupplierUserForm(forms.ModelForm):
     class Meta:
         model = SupplierProfile
         fields = [
-            "user",
+            "supplierCode",
+            "address",
+            "country",
+            "contactPerson",
+            "phoneNumber",
         ]

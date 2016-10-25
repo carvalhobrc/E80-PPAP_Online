@@ -12,11 +12,10 @@
         <form method="post" action="">
             {% csrf_token %}
             {% if embraco_users_enabled %}
-                <button type="submit" class="btn btn-default" name="action" value="list_embraco_users">Manage Embraco's users</button>
+                <button type="submit" class="btn btn-default" name="action" value="list_embraco_users">Embraco's users</button>
             {% endif %}
-            <button type="submit" class="btn btn-default" name="action" value="list_supplier_users">Manage Suppliers</button>
+            <button type="submit" class="btn btn-default" name="action" value="list_supplier_users">Suppliers users</button>
         </form>
-
         {% if user_list_type %}
             <h3 class="normaltext">Click on the button beside to filter information by column:  </h3>
             <button class="btn btn-default btn-sm btn-filter" id ="space_from_text"><span class="glyphicon glyphicon-filter"></span> Filter</button>
@@ -25,56 +24,41 @@
             <table class="table">
                     <thead>
                         <tr class="color1 filters">
-                            <th><input id="column_style" type="text" class="form-control" placeholder="Name" disabled></th>
-                            <th><input id="column_style" type="text" class="form-control" placeholder="Department" disabled></th>
-                            <th><input id="column_style" type="text" class="form-control" placeholder="More Information" disabled></th>
-
+                            {% if user_list_type == 'embraco'%}
+                                <th><input id="column_style" type="text" class="form-control" placeholder="Name" disabled></th>
+                                <th><input id="column_style" type="text" class="form-control" placeholder="Job Title" disabled></th>
+                                <th><input id="column_style" type="text" class="form-control" placeholder="Department" disabled></th>
+                                <th><input id="column_style" type="text" class="form-control" placeholder="More Information" disabled></th>
+                            {% elif user_list_type == 'supplier'%}
+                                <th><input id="column_style" type="text" class="form-control" placeholder="Code" disabled></th>
+                                <th><input id="column_style" type="text" class="form-control" placeholder="Supplier" disabled></th>
+                                <th><input id="column_style" type="text" class="form-control" placeholder="Country" disabled></th>
+                                <th><input id="column_style" type="text" class="form-control" placeholder="More Information" disabled></th>
+                            {% endif %}
                         </tr>
                     </thead>
                     <tbody>
-                        {% for user in user_list %}
-                            <tr class="table_row_style" id="rowcolor">
-                                <td>{{ user }}</td>
-                                <td>{{ user.department }}</td>
-                                <td><a href="/manage-users/embraco/{{ user.pk }}"><input type="button" class="btn btn-default" value="More" /></a></td>
-                            </tr>
-                        {% endfor %}
+                        {% if user_list_type == 'embraco'%}
+                            {% for user_item in user_list %}
+                                <tr class="table_row_style" id="rowcolor">
+                                    <td>{{ user_item }}</td>
+                                    <td>{{ user_item.jobTitle }}</td>
+                                    <td>{{ user_item.department }}</td>
+                                    <td><a href="/manage-users/embraco/{{ user_item.pk }}"><input type="button" class="btn btn-default" value="More" /></a></td>
+                                </tr>
+                            {% endfor %}
+                        {% elif user_list_type == 'supplier'%}
+                            {% for user_item in user_list %}
+                                <tr class="table_row_style" id="rowcolor">
+                                    <td>{{ user_item.supplierCode }}</td>
+                                    <td>{{ user_item }}</td>
+                                    <td>{{ user_item.country }}</td>
+                                    <td><a href="/manage-users/supplier/{{ user_item.pk }}"><input type="button" class="btn btn-default" value="More" /></a></td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
                     </tbody>
             </table>
-        {% endif %}
+        {%  endif %}
 	</div>
-
-    TABELA DE USUÁRIOS DA EMBRACO
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Area</th>
-        </tr>
-        {% for item in embraco_users %}
-        <tr>
-            <td><a href="/manage-users/embraco/{{ item.pk }}">{{ item.id }}</td>
-            <td>{{ item }}</td>
-            <td>{{ item.department }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <br>
-    <br>
-
-
-    TABELA DE FORNECEDORES
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Contact Person</th>
-        </tr>
-        {% for item in supplier_users %}
-        <tr>
-            <td><a href="//manage-users/supplier/{{ item.user.id }}">{{ item.user.id }}</td>
-            <td>{{ item }}</td>
-            <td>{{ item.contactPerson }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-
 {% endblock %}

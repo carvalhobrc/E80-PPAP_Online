@@ -7,17 +7,22 @@ from django.views import View
 @login_required(login_url='/auth/login/')
 def manageUsers(request):
     embraco_users_enabled = request.session['user_type'] == 'Embraco'
+    # Check if user requested to view a specific content
+    # If not, shows suppliers by default
     if request.method == 'POST':
         action = request.POST['action']
-        if action=='list_embraco_users':
-            user_list_type='embraco'
-            user_list = EmbracoProfile.objects.all()
-        elif action=='list_supplier_users':
-            user_list_type='supplier'
-            user_list = SupplierProfile.objects.all()
     else:
-        user_list_type = None
-        user_list = None
+        action = 'list_supplier_users'
+
+    # Get contents based on action value
+    if action == 'list_embraco_users':
+        user_list_type = 'embraco'
+        user_list = EmbracoProfile.objects.all()
+    elif action == 'list_supplier_users':
+        user_list_type = 'supplier'
+        user_list = SupplierProfile.objects.all()
+
+    # Returns view to user
     return render(request,
                   'manageUsers/manage-users.html',
                   {

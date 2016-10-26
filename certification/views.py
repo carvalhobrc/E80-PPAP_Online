@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import CertificationForm
 from .forms import DocumentsForm
 from .models import Certification
+from .models import RequiredCertificationDocuments
 from .models import Documents
 
 @login_required(login_url='/auth/login/')
@@ -42,28 +43,24 @@ def editCertification(request, pk, template_name = 'certification/certification-
 
 
 def documentsView(request, pk):
-
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
+        instance = Certification.objects.get(id=pk)
         # create a form instance and populate it with data from the request:
         formtest = DocumentsForm(request.POST)
         # check whether it's valid:
         if formtest.is_valid():
             # process the data in form.cleaned_data as required
-            firstitem = request.POST.get('firstitem', '')
-            seconditem = request.POST.get('seconditem', '')
-            item_obj = Documents(document_name=firstitem)
-            item_obj.save()
-            item_obj2 = Documents(document_name=seconditem)
-#            if item_obj2 != '':
-#               item_obj2.save()
-
+            item_list = request.POST.getlist('documents_checkboxes[]', None)
+            for item in item_list:
+                doc_instance = Documents.objects.get(id=item)
+                item_obj = RequiredCertificationDocuments(document_type=doc_instance, certification=instance)
+                item_obj.save()
             return HttpResponseRedirect('/certification')
-
     # if a GET (or any other method) we'll create a blank form
     else:
-        formtest = DocumentsForm()
-    return render(request, 'certification/certification-new2.html', {"form": formtest})
+        documents = Documents.objects.all()
+    return render(request, 'certification/certification-new2.html', {"documents": documents})
 
 
 def overview(request):

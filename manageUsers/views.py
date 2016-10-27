@@ -6,24 +6,36 @@ from django.views import View
 
 @login_required(login_url='/auth/login/')
 def manageUsers(request):
-    if request.session['user_type'] == 'Embraco':
-        embraco_users = EmbracoProfile.objects.all()
+    embraco_users_enabled = request.session['user_type'] == 'Embraco'
+    # Check if user requested to view a specific content
+    # If not, shows suppliers by default
+    if request.method == 'POST':
+        action = request.POST['action']
     else:
-        embraco_users = None
-    supplier_users = SupplierProfile.objects.all()
+        action = 'list_supplier_users'
 
+    # Get contents based on action value
+    if action == 'list_embraco_users':
+        user_list_type = 'embraco'
+        user_list = EmbracoProfile.objects.all()
+    elif action == 'list_supplier_users':
+        user_list_type = 'supplier'
+        user_list = SupplierProfile.objects.all()
+
+    # Returns view to user
     return render(request,
                   'manageUsers/manage-users.html',
                   {
-                      "embraco_users": embraco_users,
-                      "supplier_users": supplier_users,
+                      "embraco_users_enabled": embraco_users_enabled,
+                      "user_list_type": user_list_type,
+                      "user_list": user_list,
                   })
 
 @login_required(login_url='/auth/login/')
 def editEmbracoUser(request, pk, template_name = 'manageUsers/embraco_user_edit.html'):
-    instance = User.objects.get(id=pk)
-    user_form = UserForm(request.POST or None, instance=instance)
-    embraco_user_form = EmbracoUserForm(request.POST or None, instance=instance.embracoprofile)
+    instance = EmbracoProfile.objects.get(id=pk)
+    user_form = UserForm(request.POST or None, instance=instance.user)
+    embraco_user_form = EmbracoUserForm(request.POST or None, instance=instance)
     if request.method == 'POST':
         # check whether it's valid:dj
         if user_form.is_valid() and embraco_user_form.is_valid():
@@ -38,9 +50,9 @@ def editEmbracoUser(request, pk, template_name = 'manageUsers/embraco_user_edit.
 
 @login_required(login_url='/auth/login/')
 def editSupplierUser(request, pk, template_name = 'manageUsers/supplier_user_edit.html'):
-    instance = User.objects.get(id=pk)
-    user_form = UserForm(request.POST or None, instance=instance)
-    supplier_user_form = SupplierUserForm(request.POST or None, instance=instance.supplierprofile)
+    instance = SupplierProfile.objects.get(id=pk)
+    user_form = UserForm(request.POST or None, instance=instance.user)
+    supplier_user_form = SupplierUserForm(request.POST or None, instance=instance)
     if request.method == 'POST':
         # check whether it's valid:dj
         if user_form.is_valid() and supplier_user_form.is_valid():

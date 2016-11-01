@@ -10,7 +10,7 @@
     <script src="{%  static 'js/form-list.js' %}"></script>
 
 	<div class="tableBox filterable" id="centerBox">
-        <h3 id="main_heading">Manage Users</h3>
+        <h3 id="main_heading">Manage Users: {{ user_list_type|title }}</h3>
         <form method="post" action="">
             {% csrf_token %}
             <button type="submit" class="btn btn-default" name="action" value="list_supplier_users">Suppliers users</button>
@@ -21,7 +21,7 @@
         {% if user_list_type %}
             <h3 class="normaltext">Click on the button beside to filter information by column:  </h3>
             <button class="btn btn-default btn-sm btn-filter" id ="space_from_text"><span class="glyphicon glyphicon-filter"></span> Filter</button>
-            <br>
+            <a href="{{ user_list_type }}\new"><span style="float:right; margin-top:-5px;"><input type="button" class="btn btn-ppap-form" value="Add New"/></span></a>
             <br>
             <table class="table">
                     <thead class="ppap-thead">

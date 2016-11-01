@@ -1,13 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-import datetime
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .forms import CertificationForm
-from .forms import DocumentsForm
-from .models import Certification
-from .models import RequiredCertificationDocuments
-from .models import Documents
+from .forms import CertificationForm, DocumentsForm
+from .models import Certification, RequiredCertificationDocuments, Documents
 
 @login_required(login_url='/auth/login/')
 def index(request):

@@ -12,6 +12,13 @@ class UserForm(forms.ModelForm):
             "last_name",
             "email",
         ]
+        widgets = {
+            "username": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
+            "password": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
+            "first_name": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
+            "last_name": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
+            "email": forms.EmailInput(attrs={'class': 'form-control ppap-form-field'}),
+        }
 
 class EmbracoUserForm(forms.ModelForm):
     class Meta:
@@ -22,6 +29,12 @@ class EmbracoUserForm(forms.ModelForm):
             "phoneNumber",
             "is_administrator",
         ]
+        widgets = {
+            "department": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
+            "jobTitle": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
+            "phoneNumber": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
+            "is_administrator": forms.CheckboxInput(attrs={'class': 'form-control ppap-form-field'}),
+        }
 
 class SupplierUserForm(forms.ModelForm):
     class Meta:
@@ -33,3 +46,10 @@ class SupplierUserForm(forms.ModelForm):
             "contactPerson",
             "phoneNumber",
         ]
+        widgets = {
+            "supplierCode": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
+            "address": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
+            "country": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
+            "contactPerson": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
+            "phoneNumber": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
+        }

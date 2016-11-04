@@ -116,7 +116,7 @@
 }
 
 .ppap-base-div {
-    height: calc(100% - 130px);
+    height: calc(100vh - 130px);
 }
 
 .ppap-content-div {

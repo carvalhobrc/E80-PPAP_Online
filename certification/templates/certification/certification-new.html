@@ -6,11 +6,8 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
     <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('.datepicker').datepicker();
-    });
-    </script>
+	<script src="{%  static 'js/form-new.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/form_test.css' %}">
 
     <form method="post">
         {% csrf_token %}
@@ -19,74 +16,74 @@
 		<br>
 		<br>
     	<div class="form-group row">
-    	  <label for="example-text-input" class="col-xs-2 col-form-label, embraco-font-dark-green">Supplier:</label>
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Supplier:</label>
     	  <div class="col-xs-10">
              {{ form.supplier }}
     	  </div>
     	</div>
 
         <div class="form-group row">
-    	  <label for="example-text-input" class="col-xs-2 col-form-label, embraco-font-dark-green">Responsible:</label>
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Responsible:</label>
     	  <div class="col-xs-10">
              {{ form.responsible }}
     	  </div>
     	</div>
 
         <div class="form-group row">
-    	  <label for="example-text-input" class="col-xs-2 col-form-label, embraco-font-dark-green">Code:</label>
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Code:</label>
     	  <div class="col-xs-10">
              {{ form.code}}
     	  </div>
     	</div>
 
         <div class="form-group row">
-    	  <label for="example-text-input" class="col-xs-2 col-form-label, embraco-font-dark-green">Product Description:</label>
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Product Description:</label>
     	  <div class="col-xs-10">
              {{ form.product_description }}
     	  </div>
     	</div>
 
-       <div class="form-group row">
-    	  <label for="example-text-input" class="col-xs-2 col-form-label, embraco-font-dark-green">ECM Revision:</label>
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">ECM Revision:</label>
     	  <div class="col-xs-10">
              {{ form.revision_ECM }}
     	  </div>
     	</div>
 
-       <div class="form-group row">
-    	  <label for="example-text-input" class="col-xs-2 col-form-label, embraco-font-dark-green">Last Revision:</label>
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Last Revision:</label>
     	  <div class="col-xs-10">
              {{ form.revision_last }}
     	  </div>
     	</div>
 
-       <div class="form-group row">
-    	  <label for="example-text-input" class="col-xs-2 col-form-label, embraco-font-dark-green">Planned Steps:</label>
-    	  <div class="col-xs-10" style="max-width: 60%;">
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Planned Steps:</label>
+    	  <div class="col-xs-10">
              {{ form.planned_steps }}
     	  </div>
     	</div>
 
-       <div class="form-group row">
-    	  <label for="example-text-input" class="col-xs-2 col-form-label, embraco-font-dark-green">Date:</label>
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Date:</label>
     	  <div class="col-xs-10">
              {{ form.date }}
     	  </div>
     	</div>
 
-       <div class="form-group row">
-    	  <label for="example-text-input" class="col-xs-2 col-form-label, embraco-font-dark-green">Submission Reason:</label>
-    	  <div class="col-xs-10">
-             {{ form.submission_reason }}
-    	  </div>
-    	</div>
+		<div class="form-group row">
+    	  	<label for="id_application_method" class="col-xs-2 col-form-label, embraco-font-dark-green">Submission Reason:</label>
+			<div class="col-xs-10">
+			{{form.submission_reason}}
+			</div>
+		</div>
 
-{% comment %}       <div class="form-group row">
-    	  <label for="example-text-input" class="col-xs-2 col-form-label, embraco-font-dark-green">Other Reason:</label>
+        <div id="Other" class="form-group row other_option">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Other Reason:</label>
     	  <div class="col-xs-10">
              {{ form.submission_reason_other }}
     	  </div>
-    	</div>{% endcomment %}
+    	</div>
 
         <input type="submit" class="btn btn-ppap-form"  value="Next" />
     </form>

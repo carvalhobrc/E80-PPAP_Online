@@ -1,13 +1,8 @@
 from django import forms
 from .models import Certification
+from django.views.generic import DetailView
 
 class CertificationForm(forms.ModelForm):
-    FAVORITE_COLORS_CHOICES = (
-        ('blue', 'Blue'),
-        ('green', 'Green'),
-        ('black', 'Black'),
-    )
-
     class Meta:
         model = Certification
         fields = [
@@ -20,14 +15,19 @@ class CertificationForm(forms.ModelForm):
             "planned_steps",
             "date",
             "submission_reason",
-            #"submission_reason_other",
+            "submission_reason_other",
         ]
-        FAVORITE_COLORS_CHOICES = (
-            ('blue', 'Blue'),
-            ('green', 'Green'),
-            ('black', 'Black'),
+
+        SUB_REASON_CHOICES = (
+            ('New item or new supplier', 'New item or new supplier'),
+            ('Specification change', 'Specification change'),
+            ('Tooling transference, replacement, repair or spare', 'Tooling transference, replacement, repair or spare'),
+            ('Toll without consumption for 6 months or more', 'Toll without consumption for 6 months or more'),
+            ('Optional version', 'Optional version'),
+            ("Supplier's raw material sourcing change", "Supplier's raw material sourcing change"),
+            ("Supplier's manufacturing process change", "Supplier's manufacturing process change"),
+            ('Other','Other (Please type the explanation below)'),
         )
-        CHOICES = (('Option 1', 'Option 1'), ('Option 2', 'Option 2'),)
         widgets = {
             "supplier": forms.Select(attrs={'class': 'form-control ppap-form-field'}),
             "responsible": forms.Select(attrs={'class':'form-control ppap-form-field'}),
@@ -39,8 +39,8 @@ class CertificationForm(forms.ModelForm):
             "planned_steps": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
             #"date":forms.SelectDateWidget(attrs={'style': 'width: 32.8%; display: inline-block;','class':'form-control ppap-form-field'}),
             "date": forms.DateInput(attrs={'class': 'datepicker , form-control ppap-form-field'}),
-            "submission_reason": forms.Select(choices=CHOICES, attrs={'class': 'form-control ppap-form-field'}),
-            #"submission_reason_other": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
+            "submission_reason": forms.Select(choices=SUB_REASON_CHOICES, attrs={'class': 'form-control ppap-form-field','id':'id_application_method'}),
+            "submission_reason_other": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
         }
 
 class DocumentsForm(forms.Form):
@@ -48,9 +48,20 @@ class DocumentsForm(forms.Form):
     seconditem = forms.CharField(max_length=140, required=False)
 
 
+class YourDetailView(DetailView):
+    context_object_name = "certific"
+    model = Certification
 
+    def get_context_data(self, **kwargs):
+        """This has been overridden to add `car` to the templates context,
+        so you can use {{ car }} etc. within the template
+        """
+        context = super(YourDetailView, self).get_context_data(**kwargs)
+        context["car"] = Car.objects.get(registration="DK52 WLG")
+        return context
 
-
+#Alterar "car" para Certification ou RequiredDocuments e mudar em URLS para YourDetailView, como descrito no link abaixo.
+#link onde retirei informações acima: http://stackoverflow.com/questions/14936160/django-detailview-how-to-display-two-models-at-same-time
 
 class TestForm(forms.Form):
     your_name = forms.CharField(label='Your name', max_length=100)

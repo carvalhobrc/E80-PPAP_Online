@@ -4,7 +4,7 @@
 	top: 20px;
     margin-left: 5%;
     margin-right:5%;
-	position: static;
+	position: relative;
 }
 
 #forms_title {

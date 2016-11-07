@@ -3,7 +3,9 @@ from .models import Certification
 from django.views.generic import DetailView
 
 class CertificationForm(forms.ModelForm):
+    OTHER = 'Other'
     class Meta:
+        OTHER = 'Other'
         model = Certification
         fields = [
             "supplier",
@@ -18,6 +20,7 @@ class CertificationForm(forms.ModelForm):
             "submission_reason_other",
         ]
 
+
         SUB_REASON_CHOICES = (
             ('New item or new supplier', 'New item or new supplier'),
             ('Specification change', 'Specification change'),
@@ -26,7 +29,7 @@ class CertificationForm(forms.ModelForm):
             ('Optional version', 'Optional version'),
             ("Supplier's raw material sourcing change", "Supplier's raw material sourcing change"),
             ("Supplier's manufacturing process change", "Supplier's manufacturing process change"),
-            ('Other','Other (Please type the explanation below)'),
+            (OTHER,'Other (Please type the explanation below)'),
         )
         widgets = {
             "supplier": forms.Select(attrs={'class': 'form-control ppap-form-field'}),
@@ -42,6 +45,14 @@ class CertificationForm(forms.ModelForm):
             "submission_reason": forms.Select(choices=SUB_REASON_CHOICES, attrs={'class': 'form-control ppap-form-field','id':'id_application_method'}),
             "submission_reason_other": forms.TextInput(attrs={'class': 'form-control ppap-form-field'}),
         }
+
+    def __init__(self, data=None, *args, **kwargs):
+        super(CertificationForm, self).__init__(data, *args, **kwargs)
+
+        # If 'OTHER' is chosen, set submission_reason_other as required
+        if data and data.get('submission_reason', None) == self.OTHER:
+            self.fields['submission_reason_other'].required = True
+
 
 class DocumentsForm(forms.Form):
     firstitem = forms.CharField(max_length=140, required=False)

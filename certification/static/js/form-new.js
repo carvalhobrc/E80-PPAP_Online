@@ -1,21 +1,22 @@
+ function noop() {};
+
+ function hidefield() {
+    hidefield = noop; // swap the functions
+
+    $('.other_option').hide();
+
+    if ($('#id_application_method').val()=="Other"){
+        $('.other_option').show();
+    }
+}
+
     $(document).ready(function() {
         $('.datepicker').datepicker();
     });
 
 
-/*$(document).ready(function(){
-
-    $('#id_application_method').on('change', function() {
-
-        $('.method_options').hide();
-        $('#tr_' + $(this).val() ).show();
-
-    });
-
-}); */
-
 $(document).ready(function(){
-
+    hidefield();
     $('#id_application_method').on('change', function() {
 
         $('.other_option').hide();

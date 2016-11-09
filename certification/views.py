@@ -4,7 +4,6 @@ import datetime
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .forms import CertificationForm
-from .forms import DocumentsForm
 from .models import Certification
 from .models import RequiredCertificationDocuments
 from .models import Documents
@@ -48,6 +47,8 @@ def documentsView(request, pk):
         instance = Certification.objects.get(id=pk)
         # process the data in form.cleaned_data as required
         item_list = request.POST.getlist('documents_checkboxes[]', None)
+        print("Here it goes the list:")
+        print(item_list)
         for item in item_list:
             doc_instance = Documents.objects.get(id=item)
             item_obj = RequiredCertificationDocuments(document_type=doc_instance, certification=instance)
@@ -68,15 +69,24 @@ def editDocumentsView(request, pk):
         item_list = request.POST.getlist('documents_checkboxes[]', None)
         for item in item_list:
             doc_instance = Documents.objects.get(id=item)
-            item_obj = RequiredCertificationDocuments(document_type=doc_instance, certification=instance)
+            try:
+                if RequiredCertificationDocuments.objects.get(document_type=doc_instance, certification=instance):
+                    print("Do nothing!")
+            except RequiredCertificationDocuments.DoesNotExist:
+                doc.checkbox = ""
+             = RequiredCertificationDocuments()
             item_obj.save()
         return HttpResponseRedirect('/certification')
     # if a GET (or any other method) we'll create a blank form
     else:
         documents = Documents.objects.all()
-        for doc in documents
-            if RequiredCertificationDocuments.objects.get(certification=pk, document_type=doc.pk)
-                    checklist = true/false
+        for doc in documents:
+            try:
+                if RequiredCertificationDocuments.objects.get(certification=pk, document_type=doc.id):
+                       doc.checkbox = "checked"
+            except RequiredCertificationDocuments.DoesNotExist:
+                doc.checkbox = ""
+
     return render(request, 'certification/certification-new2.html', {"documents": documents})
 
 

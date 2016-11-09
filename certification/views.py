@@ -41,37 +41,42 @@ def editCertification(request, pk, template_name = 'certification/certification-
             return HttpResponseRedirect("/certification/" + str(instance.id) + "/edit2")
     return render(request, template_name, { "form": form })
 
-@login_required(login_url='/auth/login/')
-def editCertification2(request, pk, template_name = 'certification/certification-new2.html'):
-    instance = Documents.objects.all(id=pk)
-    form = DocumentsForm(request.POST or None, instance=instance)
-    if request.method == 'POST':
-        # check whether it's valid:dj
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # redirect to a new URL:
-            form.save()
-            return HttpResponseRedirect("/certification/" + str(instance.id))
-    return render(request, template_name, { "form": form })
 
 def documentsView(request, pk):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         instance = Certification.objects.get(id=pk)
-        # create a form instance and populate it with data from the request:
-        formtest = DocumentsForm(request.POST)
-        # check whether it's valid:
-        if formtest.is_valid():
-            # process the data in form.cleaned_data as required
-            item_list = request.POST.getlist('documents_checkboxes[]', None)
-            for item in item_list:
-                doc_instance = Documents.objects.get(id=item)
-                item_obj = RequiredCertificationDocuments(document_type=doc_instance, certification=instance)
-                item_obj.save()
-            return HttpResponseRedirect('/certification')
+        # process the data in form.cleaned_data as required
+        item_list = request.POST.getlist('documents_checkboxes[]', None)
+        for item in item_list:
+            doc_instance = Documents.objects.get(id=item)
+            item_obj = RequiredCertificationDocuments(document_type=doc_instance, certification=instance)
+            item_obj.save()
+        return HttpResponseRedirect('/certification')
     # if a GET (or any other method) we'll create a blank form
     else:
         documents = Documents.objects.all()
+    return render(request, 'certification/certification-new2.html', {"documents": documents})
+
+
+@login_required(login_url='/auth/login/')
+def editDocumentsView(request, pk):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        instance = Certification.objects.get(id=pk)
+        # process the data in form.cleaned_data as required
+        item_list = request.POST.getlist('documents_checkboxes[]', None)
+        for item in item_list:
+            doc_instance = Documents.objects.get(id=item)
+            item_obj = RequiredCertificationDocuments(document_type=doc_instance, certification=instance)
+            item_obj.save()
+        return HttpResponseRedirect('/certification')
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        documents = Documents.objects.all()
+        for doc in documents
+            if RequiredCertificationDocuments.objects.get(certification=pk, document_type=doc.pk)
+                    checklist = true/false
     return render(request, 'certification/certification-new2.html', {"documents": documents})
 
 

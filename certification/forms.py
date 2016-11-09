@@ -54,9 +54,6 @@ class CertificationForm(forms.ModelForm):
             self.fields['submission_reason_other'].required = True
 
 
-class DocumentsForm(forms.Form):
-    firstitem = forms.CharField(max_length=140, required=False)
-    seconditem = forms.CharField(max_length=140, required=False)
 
 
 class YourDetailView(DetailView):

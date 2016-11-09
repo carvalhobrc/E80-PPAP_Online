@@ -16,7 +16,7 @@
 
                   {% for item in documents %}
                       <div class="checkbox-color">
-                           <input type="checkbox" value={{ item.id }} name="documents_checkboxes[]" id="{{ item.id }}"/>
+                           <input type="checkbox" value={{ item.id }} name="documents_checkboxes[]" id="{{ item.id }}" checked="{{ item.id }}"/>
                            <label for="{{ item.id }}">{{ item.document_name }}</label>
                       </div>
                   {% endfor %}

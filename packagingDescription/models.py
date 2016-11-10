@@ -2,14 +2,8 @@ from django.db import models
 from certification.models import RequiredCertificationDocuments
 from authentication.models import EmbracoProfile
 
-class PackagingDescription(models.Model):
-    document = models.OneToOneField(RequiredCertificationDocuments, on_delete=models.PROTECT)
-
-    def __str__(self):
-        return self.document
-
 class PackagingRequirements(models.Model):
-    packaging_description = models.OneToOneField(PackagingDescription,on_delete=models.PROTECT)
+    packaging_description = models.OneToOneField(RequiredCertificationDocuments,on_delete=models.PROTECT)
     packaging_type = models.CharField(max_length=20, default='Type')
     start_date = models.DateField()
     container_type = models.CharField(max_length=20, default='Container Type')
@@ -32,7 +26,7 @@ class PackagingRequirements(models.Model):
         return self.packagingDescription
 
 class SupplierPackagingDescription(models.Model):
-    packaging_description = models.ForeignKey(PackagingDescription, on_delete=models.PROTECT)
+    packaging_description = models.ForeignKey(RequiredCertificationDocuments, on_delete=models.PROTECT)
     packaging_type = models.CharField(max_length=20, default='Type')
     start_date = models.DateField()
     container_type = models.CharField(max_length=20, default='Container Type')

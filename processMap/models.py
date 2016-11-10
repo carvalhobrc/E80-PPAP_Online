@@ -1,14 +1,9 @@
 from django.db import models
 from certification.models import RequiredCertificationDocuments,MeasurementSystem
 
-class ProcessMap(models.Model):
-    document = models.OneToOneField(RequiredCertificationDocuments, on_delete=models.PROTECT)
-
-    def __str__(self):
-        return self.document
 
 class ProcessStep(models.Model):
-    process_map = models.ForeignKey(ProcessMap, on_delete=models.PROTECT)
+    process_map = models.ForeignKey(RequiredCertificationDocuments, on_delete=models.PROTECT)
     step_number = models.IntegerField(default=0)
     step_name = models.CharField(max_length=50,default='Step Name')
 

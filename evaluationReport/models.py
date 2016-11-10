@@ -2,21 +2,15 @@ from django.db import models
 from certification.models import RequiredCertificationDocuments
 from authentication.models import EmbracoProfile, SupplierProfile
 
-class EvaluationReport(models.Model):
-    document = models.OneToOneField(RequiredCertificationDocuments, on_delete=models.PROTECT)
-
-    def __str__(self):
-        return self.document
-
 class GroupOfCharacteristics(models.Model):
-    evaluationreport = models.ForeignKey(EvaluationReport, on_delete=models.CASCADE)
+    evaluationreport = models.ForeignKey(RequiredCertificationDocuments, on_delete=models.CASCADE)
     group_name = models.CharField(max_length=50, default='')
 
     def __str__(self):
         return self.group_name
 
 class Characteristics(models.Model):
-    evaluationreport = models.ForeignKey(EvaluationReport, on_delete=models.PROTECT)
+    evaluationreport = models.ForeignKey(RequiredCertificationDocuments, on_delete=models.PROTECT)
     group = models.ForeignKey(GroupOfCharacteristics, on_delete=models.SET_NULL, null=True)
     characteristic = models.CharField(max_length=40, default='')
     coordinates = models.CharField(max_length=4, default='')

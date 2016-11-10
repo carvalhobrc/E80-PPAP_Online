@@ -12,6 +12,7 @@ class GroupOfCharacteristics(models.Model):
 class Characteristics(models.Model):
     evaluationreport = models.ForeignKey(RequiredCertificationDocuments, on_delete=models.PROTECT)
     group = models.ForeignKey(GroupOfCharacteristics, on_delete=models.SET_NULL, null=True)
+    number = models.IntegerField(unique=True, default=0)
     characteristic = models.CharField(max_length=40, default='')
     coordinates = models.CharField(max_length=4, default='')
     type = models.CharField(max_length=5, default='')

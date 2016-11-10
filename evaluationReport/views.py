@@ -18,7 +18,6 @@ def characteristics(request, template_name = 'evaluationReport/characteristics.h
         sel_certification = Certification.objects.get(id=802)
     doc_instance = Documents.objects.get(id=102) #Doc instance for the Evaluation Report document
     eval_report = RequiredCertificationDocuments.objects.get(certification=sel_certification, document_type=doc_instance)
-    characteristics_list =
 
     #
     # instance = EmbracoProfile.objects.get(id=pk)
@@ -36,5 +35,4 @@ def characteristics(request, template_name = 'evaluationReport/characteristics.h
     #         url = reverse('characteristics', kwargs={'action': 'list_embraco_users'})
     #         return HttpResponseRedirect(url)
     # return render(request, template_name, { "characteristics": characteristics_list , "embraco_user_form": embraco_user_form,})
-    url = reverse('characteristics')
-    return HttpResponseRedirect(url)
+    return render(request,template_name=template_name)

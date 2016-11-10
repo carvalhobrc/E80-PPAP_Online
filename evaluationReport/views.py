@@ -18,7 +18,8 @@ def characteristics(request, template_name = 'evaluationReport/characteristics.h
         sel_certification = Certification.objects.get(id=802)
     doc_instance = Documents.objects.get(id=102) #Doc instance for the Evaluation Report document
     eval_report = RequiredCertificationDocuments.objects.get(certification=sel_certification, document_type=doc_instance)
-    eval_characteristics = Characteristics.objects.get_or_create()
+    characteristics_list =
+
     #
     # instance = EmbracoProfile.objects.get(id=pk)
     # user_form = UserForm(request.POST or None, instance=instance.user)

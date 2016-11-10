@@ -1,0 +1,4 @@
+.widetable {
+    max-width: 90vw;
+    overflow-x: auto;
+}

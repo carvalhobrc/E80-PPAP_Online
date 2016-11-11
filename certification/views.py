@@ -47,8 +47,6 @@ def documentsView(request, pk):
         instance = Certification.objects.get(id=pk)
         # process the data in form.cleaned_data as required
         item_list = request.POST.getlist('documents_checkboxes[]', None)
-        print("Here it goes the list:")
-        print(item_list)
         for item in item_list:
             doc_instance = Documents.objects.get(id=item)
             item_obj = RequiredCertificationDocuments(document_type=doc_instance, certification=instance)
@@ -69,12 +67,7 @@ def editDocumentsView(request, pk):
         item_list = request.POST.getlist('documents_checkboxes[]', None)
         for item in item_list:
             doc_instance = Documents.objects.get(id=item)
-            try:
-                if RequiredCertificationDocuments.objects.get(document_type=doc_instance, certification=instance):
-                    print("Do nothing!")
-            except RequiredCertificationDocuments.DoesNotExist:
-                doc.checkbox = ""
-             = RequiredCertificationDocuments()
+            item_obj = RequiredCertificationDocuments(document_type=doc_instance, certification=instance)
             item_obj.save()
         return HttpResponseRedirect('/certification')
     # if a GET (or any other method) we'll create a blank form
@@ -84,10 +77,13 @@ def editDocumentsView(request, pk):
             try:
                 if RequiredCertificationDocuments.objects.get(certification=pk, document_type=doc.id):
                        doc.checkbox = "checked"
+                       item_delete = RequiredCertificationDocuments.objects.get(certification=pk, document_type=doc.id)
+                       #item_delete.delete()
             except RequiredCertificationDocuments.DoesNotExist:
                 doc.checkbox = ""
 
     return render(request, 'certification/certification-new2.html', {"documents": documents})
+
 
 
 def overview(request):

@@ -1,3 +1,48 @@
-.widetable {
+.char-table {
+	background-color: #FFFFFF;
+	top: 2px;
+	position: static;
+    width: 100vw;
+    max-height: 50vw;
     overflow-x: auto;
+    overflow-y: auto;
+}
+
+.color1 {
+	background-color: #008791;
+	color: white;
+}
+.normaltext {
+	color: #008791;
+	font-size: 16px;
+	font-family: Verdana;
+	display: inline-block;
+}
+#main_heading{
+	color: #008791;
+	font-size: 24px;
+	font-family: Verdana;
+}
+#rowcolor {
+	background-color: #DDEEF4;
+}
+
+#space_from_text {
+    margin-left: 0.7%;
+}
+
+#column_style{
+    text-align: center;
+}
+
+.char-cols {
+
+}
+
+.char-col-1 {
+    width: 10px;
+}
+
+.char-col-2, .char-col-3, .char-col-5, .char-col-6, .char-col-7, .char-col-8, .char-col-9, .char-col-10{
+    width: 50px;
 }

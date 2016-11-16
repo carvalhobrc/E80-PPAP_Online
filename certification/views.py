@@ -4,9 +4,7 @@ import datetime
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .forms import CertificationForm
-from .models import Certification
-from .models import RequiredCertificationDocuments
-from .models import Documents
+from .models import Certification, RequiredCertificationDocuments, Documents
 
 @login_required(login_url='/auth/login/')
 def index(request):

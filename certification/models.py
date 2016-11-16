@@ -11,7 +11,7 @@ class Certification(models.Model):
     planned_steps = models.CharField(max_length=140, default='')
     date = models.DateField(default=0)
     submission_reason = models.CharField(max_length=140, default='')
-    submission_reason_other = models.CharField(max_length=140, default='')
+    submission_reason_other = models.CharField(max_length=140, default='', blank=True)
     closed = models.BooleanField(default=False)
 
     def __str__(self):

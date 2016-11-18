@@ -1,0 +1,61 @@
+.infoTableBox{
+	background-color: #FFFFFF;
+	top: 15px;
+	margin-left: 2%;
+    width: 45%;
+	position: relative;
+}
+.documents_box{
+	background-color: #FFFFFF;
+	top: 15px;
+	margin-left: 52%;
+    width: 45%;
+	position: absolute;
+}
+
+.color1 {
+	background-color: #008791;
+	color: white;
+}
+.normaltext {
+	color: #008791;
+	font-size: 16px;
+	font-family: Verdana;
+	display: inline-block;
+}
+#main_heading{
+	color: #008791;
+	font-size: 24px;
+	font-family: Verdana;
+}
+#rowcolor {
+	background-color: #DDEEF4;
+}
+
+#table_style {
+	text-align: center;
+	font-size:17px;
+}
+
+.boxes {
+    border: 2px solid #69B39E;
+    border-radius: 10px;
+    background-color: #69B39E;
+    width: 30%;
+    height: 90px;
+    color: white;
+    text-align: center;
+    font-family: Verdana;
+    font-size: 100%;
+    display: inline-block;
+    margin-left: 2%;
+    margin-top: 25px;
+}
+
+.check {
+	width: 15%;
+    height: 20%;
+	margin-top: -4%;
+	margin-right: 3%;
+	float: right;
+}

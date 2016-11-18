@@ -3,10 +3,10 @@
 {% block content %}
 {% load staticfiles %}
 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/certification.css'  %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/certification_view.css'  %}">
 
 
-	<div class="infoTableBox" id="infoCenterBox">
+	<div class="infoTableBox">
 		<h3 id="main_heading">Certification code {{ certification.code }} of {{ certification.supplier }}</h3>
 		<table class="table results" id="table_style">
 		  <thead >
@@ -14,7 +14,6 @@
 			  <th id="table_style">#</th>
 			  <th id="table_style">Filled Information</th>
 			</tr>
-          <br>
           <br>
 		  </thead>
 
@@ -76,5 +75,14 @@
 
 	</div>
 
+    <div class="documents_box">
+    <h3 id="main_heading">Required Documents:</h3>
+        {% for item in documents %}
+           <div class="boxes" id="{{ item.required }}">
+                <br><p>{{ item.document_name }}</p>
+                <img style="{{ item.comment }}" class="check" src="{% static 'img/check-white-small.png' %}" />
+           </div>
+        {% endfor %}
+    </div>
 	{{certification.body|safe|linebreaks}}
 {% endblock %}

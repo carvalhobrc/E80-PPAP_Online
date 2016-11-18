@@ -41,7 +41,7 @@ def editCertification(request, pk, template_name = 'certification/certification-
     return render(request, template_name, { "form": form })
 
 
-def documentsView(request, pk):
+def documents(request, pk):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         instance = Certification.objects.get(id=pk)
@@ -59,7 +59,7 @@ def documentsView(request, pk):
 
 
 @login_required(login_url='/auth/login/')
-def editDocumentsView(request, pk):
+def editDocuments(request, pk):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         instance = Certification.objects.get(id=pk)
@@ -78,13 +78,24 @@ def editDocumentsView(request, pk):
                 if RequiredCertificationDocuments.objects.get(certification=pk, document_type=doc.id):
                        doc.checkbox = "checked"
                        item_delete = RequiredCertificationDocuments.objects.get(certification=pk, document_type=doc.id)
-                       #item_delete.delete()
+                       item_delete.delete()
             except RequiredCertificationDocuments.DoesNotExist:
                 doc.checkbox = ""
 
     return render(request, 'certification/certification-new2.html', {"documents": documents})
 
-
+def certificationView(request, pk):
+    certification = Certification.objects.get(id=pk)
+    documents = Documents.objects.all()
+    for doc in documents:
+        try:
+            if RequiredCertificationDocuments.objects.get(certification=pk, document_type=doc.id):
+                doc.required = ""
+                doc.comment = ""
+        except RequiredCertificationDocuments.DoesNotExist:
+            doc.required = "white_box"
+            doc.comment = "visibility: hidden"
+    return render(request, 'certification/certification.html', {"certification": certification, "documents": documents})
 
 def overview(request):
     return render(request, 'certification/overview.html')

@@ -90,11 +90,9 @@ def certificationView(request, pk):
     for doc in documents:
         try:
             if RequiredCertificationDocuments.objects.get(certification=pk, document_type=doc.id):
-                doc.required = ""
-                doc.comment = ""
+                doc.required = "white_box"
         except RequiredCertificationDocuments.DoesNotExist:
-            doc.required = "white_box"
-            doc.comment = "visibility: hidden"
+            doc.required = ""
     return render(request, 'certification/certification.html', {"certification": certification, "documents": documents})
 
 def overview(request):

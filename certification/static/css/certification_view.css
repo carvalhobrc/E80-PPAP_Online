@@ -50,6 +50,10 @@
     display: inline-block;
     margin-left: 2%;
     margin-top: 25px;
+
+    padding-bottom: 15%; /* relative size and position on page */
+    position:relative;  /* coord system stop */
+    top:0px;
 }
 
 .check {
@@ -58,4 +62,29 @@
 	margin-top: -4%;
 	margin-right: 3%;
 	float: right;
+    position: fixed;
+    display: block;
+
+}
+
+#white_box {
+    border: 2px solid #666666;
+	background-color: #FFFFFF;
+	color: #666666;
+    font-weight: bold;
+}
+
+.tx
+{
+    width: 100%
+    position: absolute;
+    text-align: center;
+    padding-top: 55%;
+    -webkit-transform: translateY(-50%); /* child now centers itself relative to the midline based on own contents */
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Matrix(M11=0.5, M12=0, M21=0, M22=0.5, SizingMethod="auto expand")'; /*IE8 */
+    filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.5, M12=0, M21=0, M22=0.5, SizingMethod='auto expand'); /*IE6, IE7*/
+    transform: translateY(-50%);
 }

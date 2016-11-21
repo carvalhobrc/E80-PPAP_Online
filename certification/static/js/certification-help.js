@@ -44,6 +44,12 @@ var tour = {
       target: "id_date",
       placement: "bottom"
     },
+    {
+      title: "Submission Reason",
+      content: "Select the Submission Reason or type another",
+      target: "id_date",
+      placement: "bottom"
+    },
   ]
 };
 

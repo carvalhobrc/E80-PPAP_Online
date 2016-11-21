@@ -78,10 +78,13 @@
     <div class="documents_box">
     <h3 id="main_heading">Required Documents:</h3>
         {% for item in documents %}
-           <div class="boxes" id="{{ item.required }}">
-                <br><p>{{ item.document_name }}</p>
-                <img style="{{ item.comment }}" class="check" src="{% static 'img/check-white-small.png' %}" />
-           </div>
+            {% if item.required == "white_box" %}
+                <div class="boxes" id="{{ item.required }}">
+                      <div class="tx">{{ item.document_name }}</div>
+                        {% comment %}This logic will be implemented later, when the link to the document is ready to use{% endcomment %}
+                        {% comment %}<img style="{{ item.comment }}" class="check" src="{% static 'img/check-white-small.png' %}" />{% endcomment %}
+                </div>
+            {%  endif %}
         {% endfor %}
     </div>
 	{{certification.body|safe|linebreaks}}

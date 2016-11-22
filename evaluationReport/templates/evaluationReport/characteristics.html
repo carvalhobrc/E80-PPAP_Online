@@ -4,18 +4,17 @@
 
 {% load staticfiles %}
 
-    <link rel="stylesheet" href="{% static 'css/form-list.css' %}">
     <link rel="stylesheet" href="{% static 'css/characteristics.css' %}">
 
     <script src="{%  static 'js/form-list.js' %}"></script>
 
-	<div class="widetable">
+	<div class="char-table-outer">
         <table class="char-table">
-            <thead class="ppap-char-thead">
-                <tr class="color1">
+            <thead class="char-thead">
+                <tr>
                     <th class="char-col-1">#</th>
                     <th class="char-col-2">Characteristic Evaluated</th>
-                    <th class="char-col-3">Coordinates</th>
+                    <th class="char-col-3">Coord.</th>
                     <th class="char-col-4">Type</th>
                     <th class="char-col-5">Limits</th>
                     <th class="char-col-6">Nominal</th>
@@ -25,8 +24,200 @@
                     <th class="char-col-10">Sample Size</th>
                 </tr>
             </thead>
-            <tbody class="ppap-char-tbody">
-                <tr class="table_row_style" id="rowcolor">
+            <tbody class="char-tbody">
+                <tr class="table_row_style color2">
+                    <td class="char-col-1">1</td>
+                    <td class="char-col-2">Distance</td>
+                    <td class="char-col-3">D2</td>
+                    <td class="char-col-4">STD</td>
+                    <td class="char-col-5">Upper</td>
+                    <td class="char-col-6">0,123</td>
+                    <td class="char-col-7">0,123</td>
+                    <td class="char-col-8">0,123</td>
+                    <td class="char-col-9">0,123</td>
+                    <td class="char-col-10">35</td>
+                </tr>
+                <tr class="table_row_style color2">
+                    <td class="char-col-1">1</td>
+                    <td class="char-col-2">Distance</td>
+                    <td class="char-col-3">D2</td>
+                    <td class="char-col-4">STD</td>
+                    <td class="char-col-5">Upper</td>
+                    <td class="char-col-6">0,123</td>
+                    <td class="char-col-7">0,123</td>
+                    <td class="char-col-8">0,123</td>
+                    <td class="char-col-9">0,123</td>
+                    <td class="char-col-10">35</td>
+                </tr>
+                <tr class="table_row_style color2">
+                    <td class="char-col-1">1</td>
+                    <td class="char-col-2">Distance</td>
+                    <td class="char-col-3">D2</td>
+                    <td class="char-col-4">STD</td>
+                    <td class="char-col-5">Upper</td>
+                    <td class="char-col-6">0,123</td>
+                    <td class="char-col-7">0,123</td>
+                    <td class="char-col-8">0,123</td>
+                    <td class="char-col-9">0,123</td>
+                    <td class="char-col-10">35</td>
+                </tr>
+                <tr class="table_row_style color2">
+                    <td class="char-col-1">1</td>
+                    <td class="char-col-2">Distance</td>
+                    <td class="char-col-3">D2</td>
+                    <td class="char-col-4">STD</td>
+                    <td class="char-col-5">Upper</td>
+                    <td class="char-col-6">0,123</td>
+                    <td class="char-col-7">0,123</td>
+                    <td class="char-col-8">0,123</td>
+                    <td class="char-col-9">0,123</td>
+                    <td class="char-col-10">35</td>
+                </tr>
+                <tr class="table_row_style color2">
+                    <td class="char-col-1">1</td>
+                    <td class="char-col-2">Distance</td>
+                    <td class="char-col-3">D2</td>
+                    <td class="char-col-4">STD</td>
+                    <td class="char-col-5">Upper</td>
+                    <td class="char-col-6">0,123</td>
+                    <td class="char-col-7">0,123</td>
+                    <td class="char-col-8">0,123</td>
+                    <td class="char-col-9">0,123</td>
+                    <td class="char-col-10">35</td>
+                </tr>
+                <tr class="table_row_style color2">
+                    <td class="char-col-1">1</td>
+                    <td class="char-col-2">Distance</td>
+                    <td class="char-col-3">D2</td>
+                    <td class="char-col-4">STD</td>
+                    <td class="char-col-5">Upper</td>
+                    <td class="char-col-6">0,123</td>
+                    <td class="char-col-7">0,123</td>
+                    <td class="char-col-8">0,123</td>
+                    <td class="char-col-9">0,123</td>
+                    <td class="char-col-10">35</td>
+                </tr>
+                <tr class="table_row_style color2">
+                    <td class="char-col-1">1</td>
+                    <td class="char-col-2">Distance</td>
+                    <td class="char-col-3">D2</td>
+                    <td class="char-col-4">STD</td>
+                    <td class="char-col-5">Upper</td>
+                    <td class="char-col-6">0,123</td>
+                    <td class="char-col-7">0,123</td>
+                    <td class="char-col-8">0,123</td>
+                    <td class="char-col-9">0,123</td>
+                    <td class="char-col-10">35</td>
+                </tr>
+                <tr class="table_row_style color2">
+                    <td class="char-col-1">1</td>
+                    <td class="char-col-2">Distance</td>
+                    <td class="char-col-3">D2</td>
+                    <td class="char-col-4">STD</td>
+                    <td class="char-col-5">Upper</td>
+                    <td class="char-col-6">0,123</td>
+                    <td class="char-col-7">0,123</td>
+                    <td class="char-col-8">0,123</td>
+                    <td class="char-col-9">0,123</td>
+                    <td class="char-col-10">35</td>
+                </tr>
+                <tr class="table_row_style color2">
+                    <td class="char-col-1">1</td>
+                    <td class="char-col-2">Distance</td>
+                    <td class="char-col-3">D2</td>
+                    <td class="char-col-4">STD</td>
+                    <td class="char-col-5">Upper</td>
+                    <td class="char-col-6">0,123</td>
+                    <td class="char-col-7">0,123</td>
+                    <td class="char-col-8">0,123</td>
+                    <td class="char-col-9">0,123</td>
+                    <td class="char-col-10">35</td>
+                </tr>
+                <tr class="table_row_style color2">
+                    <td class="char-col-1">1</td>
+                    <td class="char-col-2">Distance</td>
+                    <td class="char-col-3">D2</td>
+                    <td class="char-col-4">STD</td>
+                    <td class="char-col-5">Upper</td>
+                    <td class="char-col-6">0,123</td>
+                    <td class="char-col-7">0,123</td>
+                    <td class="char-col-8">0,123</td>
+                    <td class="char-col-9">0,123</td>
+                    <td class="char-col-10">35</td>
+                </tr>
+                <tr class="table_row_style color2">
+                    <td class="char-col-1">1</td>
+                    <td class="char-col-2">Distance</td>
+                    <td class="char-col-3">D2</td>
+                    <td class="char-col-4">STD</td>
+                    <td class="char-col-5">Upper</td>
+                    <td class="char-col-6">0,123</td>
+                    <td class="char-col-7">0,123</td>
+                    <td class="char-col-8">0,123</td>
+                    <td class="char-col-9">0,123</td>
+                    <td class="char-col-10">35</td>
+                </tr>
+                <tr class="table_row_style color2">
+                    <td class="char-col-1">1</td>
+                    <td class="char-col-2">Distance</td>
+                    <td class="char-col-3">D2</td>
+                    <td class="char-col-4">STD</td>
+                    <td class="char-col-5">Upper</td>
+                    <td class="char-col-6">0,123</td>
+                    <td class="char-col-7">0,123</td>
+                    <td class="char-col-8">0,123</td>
+                    <td class="char-col-9">0,123</td>
+                    <td class="char-col-10">35</td>
+                </tr>
+                <tr class="table_row_style color2">
+                    <td class="char-col-1">1</td>
+                    <td class="char-col-2">Distance</td>
+                    <td class="char-col-3">D2</td>
+                    <td class="char-col-4">STD</td>
+                    <td class="char-col-5">Upper</td>
+                    <td class="char-col-6">0,123</td>
+                    <td class="char-col-7">0,123</td>
+                    <td class="char-col-8">0,123</td>
+                    <td class="char-col-9">0,123</td>
+                    <td class="char-col-10">35</td>
+                </tr>
+                <tr class="table_row_style color2">
+                    <td class="char-col-1">1</td>
+                    <td class="char-col-2">Distance</td>
+                    <td class="char-col-3">D2</td>
+                    <td class="char-col-4">STD</td>
+                    <td class="char-col-5">Upper</td>
+                    <td class="char-col-6">0,123</td>
+                    <td class="char-col-7">0,123</td>
+                    <td class="char-col-8">0,123</td>
+                    <td class="char-col-9">0,123</td>
+                    <td class="char-col-10">35</td>
+                </tr>
+                <tr class="table_row_style color2">
+                    <td class="char-col-1">1</td>
+                    <td class="char-col-2">Distance</td>
+                    <td class="char-col-3">D2</td>
+                    <td class="char-col-4">STD</td>
+                    <td class="char-col-5">Upper</td>
+                    <td class="char-col-6">0,123</td>
+                    <td class="char-col-7">0,123</td>
+                    <td class="char-col-8">0,123</td>
+                    <td class="char-col-9">0,123</td>
+                    <td class="char-col-10">35</td>
+                </tr>
+                <tr class="table_row_style color2">
+                    <td class="char-col-1">1</td>
+                    <td class="char-col-2">Distance</td>
+                    <td class="char-col-3">D2</td>
+                    <td class="char-col-4">STD</td>
+                    <td class="char-col-5">Upper</td>
+                    <td class="char-col-6">0,123</td>
+                    <td class="char-col-7">0,123</td>
+                    <td class="char-col-8">0,123</td>
+                    <td class="char-col-9">0,123</td>
+                    <td class="char-col-10">35</td>
+                </tr>
+                <tr class="table_row_style color2">
                     <td class="char-col-1">1</td>
                     <td class="char-col-2">Distance</td>
                     <td class="char-col-3">D2</td>

@@ -9,6 +9,7 @@
 #centerBox {
 	margin: auto;
     width: 80%;
+    min-width: 600px;
 }
 
 .color1 {

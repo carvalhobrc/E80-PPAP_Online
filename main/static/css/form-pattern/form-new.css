@@ -1,6 +1,6 @@
 .formsBox {
-	height: 550px;
     max-width: 600px;
+    min-width: 400px;
 	background-color: #FFFFFF;
 	top: 20px;
     margin-left: 5%;

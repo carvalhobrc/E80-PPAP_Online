@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import datetime
 from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .forms import CertificationForm
 from .models import Certification
@@ -19,7 +20,8 @@ def index(request):
             # process the data in form.cleaned_data as required
             savedform = form.save()
             # redirect to a new URL:
-            return HttpResponseRedirect('/certification/new/' + str(savedform.pk))
+            url = reverse('certification_second_step', args=[savedform.pk])
+            return HttpResponseRedirect(url)
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -37,7 +39,8 @@ def editCertification(request, pk, template_name = 'certification/certification-
             # process the data in form.cleaned_data as required
             # redirect to a new URL:
             form.save()
-            return HttpResponseRedirect("/certification/" + str(instance.id) + "/edit2")
+            url = reverse('certification-edit2', args=[instance.id])
+            return HttpResponseRedirect(url)
     return render(request, template_name, { "form": form })
 
 
@@ -51,7 +54,8 @@ def documents(request, pk):
             doc_instance = Documents.objects.get(id=item)
             item_obj = RequiredCertificationDocuments(document_type=doc_instance, certification=instance)
             item_obj.save()
-        return HttpResponseRedirect('/certification')
+        url = reverse('certification-list')
+        return HttpResponseRedirect(url)
     # if a GET (or any other method) we'll create a blank form
     else:
         documents = Documents.objects.all()
@@ -69,7 +73,8 @@ def editDocuments(request, pk):
             doc_instance = Documents.objects.get(id=item)
             item_obj = RequiredCertificationDocuments(document_type=doc_instance, certification=instance)
             item_obj.save()
-        return HttpResponseRedirect('/certification')
+        url = reverse('certification-list')
+        return HttpResponseRedirect(url)
     # if a GET (or any other method) we'll create a blank form
     else:
         documents = Documents.objects.all()

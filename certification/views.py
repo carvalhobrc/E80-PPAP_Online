@@ -1,13 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .forms import CertificationForm
-from .models import Certification
-from .models import RequiredCertificationDocuments
-from .models import Documents
+from .models import Certification, RequiredCertificationDocuments, Documents
+
 
 @login_required(login_url='/auth/login/')
 def index(request):
@@ -20,7 +17,7 @@ def index(request):
             # process the data in form.cleaned_data as required
             savedform = form.save()
             # redirect to a new URL:
-            url = reverse('certification_second_step', args=[savedform.pk])
+            url = reverse('certification_second_step', kwargs={'pk': savedform.pk})
             return HttpResponseRedirect(url)
 
     # if a GET (or any other method) we'll create a blank form
@@ -39,11 +36,12 @@ def editCertification(request, pk, template_name = 'certification/certification-
             # process the data in form.cleaned_data as required
             # redirect to a new URL:
             form.save()
-            url = reverse('certification-edit2', args=[instance.id])
+            url = reverse('certification-edit2', kwargs={'pk': instance.id})
             return HttpResponseRedirect(url)
     return render(request, template_name, { "form": form })
 
 
+@login_required(login_url='/auth/login/')
 def documents(request, pk):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -89,6 +87,8 @@ def editDocuments(request, pk):
 
     return render(request, 'certification/certification-new2.html', {"documents": documents})
 
+
+@login_required(login_url='/auth/login/')
 def certificationView(request, pk):
     certification = Certification.objects.get(id=pk)
     documents = Documents.objects.all()

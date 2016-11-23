@@ -1,0 +1,170 @@
+{% extends 'main/side-menu.html' %}
+
+{% block content %}
+{% load staticfiles %}
+
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+
+    <form method="post">
+        {% csrf_token %}
+    <div class="formsBox">
+        <h3 id="forms_title">Fill up the Packaging Description:</h3>
+		<br>
+		<br>
+    	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Packaging Description:</label>
+    	  <div class="col-xs-10">
+             {{ form.packaging_description }}
+             {{ form.packaging_description.errors }}
+    	  </div>
+    	</div>
+
+        <div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Packaging Type:</label>
+    	  <div class="col-xs-10">
+             {{ form.packaging_type }}
+             {{ form.packaging_type.errors }}
+    	  </div>
+    	</div>
+
+        <div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Start Date:</label>
+    	  <div class="col-xs-10">
+             {{ form.start_date}}
+             {{ form.start_date.errors}}
+    	  </div>
+    	</div>
+
+        <div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Container Type:</label>
+    	  <div class="col-xs-10">
+             {{ form.container_type }}
+             {{ form.container_type.errors }}
+    	  </div>
+    	</div>
+
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Weight per Batch:</label>
+    	  <div class="col-xs-10">
+             {{ form.weight_per_batch }}
+             {{ form.weight_per_batch.errors }}
+    	  </div>
+    	</div>
+
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Weight per Pallet:</label>
+    	  <div class="col-xs-10">
+             {{ form.weight_per_pallet }}
+             {{ form.weight_per_pallet.errors }}
+    	  </div>
+    	</div>
+
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">SKU qtd per Pallet:</label>
+    	  <div class="col-xs-10">
+             {{ form.sku_qtd_per_pallet }}
+             {{ form.sku_qtd_per_pallet.errors }}
+    	  </div>
+    	</div>
+
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Container Lenght:</label>
+    	  <div class="col-xs-10">
+             {{ form.container_length }}
+             {{ form.container_length.errors }}
+    	  </div>
+    	</div>
+
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Container Width:</label>
+    	  <div class="col-xs-10">
+             {{ form.container_width }}
+             {{ form.container_width.errors }}
+    	  </div>
+    	</div>
+
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Container Height:</label>
+    	  <div class="col-xs-10">
+             {{ form.container_height }}
+             {{ form.container_height.errors }}
+    	  </div>
+    	</div>
+
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Pallet Lenght:</label>
+    	  <div class="col-xs-10">
+             {{ form.pallet_length }}
+             {{ form.pallet_length.errors }}
+    	  </div>
+    	</div>
+
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Pallet Width:</label>
+    	  <div class="col-xs-10">
+             {{ form.pallet_width }}
+             {{ form.pallet_width.errors }}
+    	  </div>
+    	</div>
+
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Pallet Height:</label>
+    	  <div class="col-xs-10">
+             {{ form.pallet_height }}
+             {{ form.pallet_height.errors }}
+    	  </div>
+    	</div>
+
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Containers per Layer:</label>
+    	  <div class="col-xs-10">
+             {{ form.container_per_layer }}
+             {{ form.container_per_layer.errors }}
+    	  </div>
+    	</div>
+
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Parts per Container:</label>
+    	  <div class="col-xs-10">
+             {{ form.parts_per_container }}
+             {{ form.parts_per_container.errors }}
+    	  </div>
+    	</div>
+
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Layers per Pallet:</label>
+    	  <div class="col-xs-10">
+             {{ form.layers_per_pallet }}
+             {{ form.layers_per_pallet.errors }}
+    	  </div>
+    	</div>
+
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Containers per Pallet:</label>
+    	  <div class="col-xs-10">
+             {{ form.containers_per_pallet }}
+             {{ form.containers_per_pallet.errors }}
+    	  </div>
+    	</div>
+
+       	<div class="form-group row">
+    	  <label class="col-xs-2 col-form-label, embraco-font-dark-green">Pieces per Pallet:</label>
+    	  <div class="col-xs-10">
+             {{ form.pieces_per_pallet }}
+             {{ form.pieces_per_pallet.errors }}
+    	  </div>
+    	</div>
+
+        <input type="submit" class="btn btn-ppap-form"  value="Next" />
+    </form>
+
+{% comment %}    <span style="float:right; margin-top:20px;"><input type="button" id="startTourBtn" class="btn btn-default" value="HELP!"/></span>
+
+
+    <!-- define your tour in this file -->
+    <script src="{% static 'js/certification-help.js' %}"></script>{% endcomment %}
+    </div>
+
+{% endblock %}

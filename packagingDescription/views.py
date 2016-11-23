@@ -22,4 +22,4 @@ def packagingRequirements(request):
     # if a GET (or any other method) we'll create a blank form
     else:
         form = PackagingRequirementsForm()
-    return render(request, 'certification/certification-new.html', {"form": form})
+    return render(request, 'packagingDescription/packagingDescription_new.html', {"form": form})

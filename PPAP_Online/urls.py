@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^process-map/', include('processMap.urls')),
     url(r'^manage-users/', include('manageUsers.urls')),
     url(r'^evaluation-report/', include('evaluationReport.urls')),
+    url(r'^packaging-description/', include('packagingDescription.urls')),
 
 ]

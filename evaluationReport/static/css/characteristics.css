@@ -1,19 +1,16 @@
 .char-table-outer {
     padding: 50px 0px 0px 0px;
-    max-width: 100vw;
-    overflow-x: auto;
-    overflow-y: hidden;
 }
 
 table {
     table-layout: fixed;
     border-collapse: collapse;
+    max-width: 100vw;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 table, th, td {
     border: 1px solid #FFFFFF;
-}
-tr:hover {
-    background-color: #f5f5f5
 }
 th {
     background-color: #008791;
@@ -48,8 +45,8 @@ tbody{
     max-width: 30px;
 }
 .char-col-2 {
-    min-width: 160px;
-    max-width: 160px;
+    min-width: 200px;
+    max-width: 200px;
 }
 .char-col-3, .char-col-4, .char-col-5, .char-col-6, .char-col-7, .char-col-8 {
     min-width: 100px;

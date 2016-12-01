@@ -46,10 +46,10 @@
 <body style="overflow: hidden">
     <!-- Complete page -->
     <div class="ppap-header">
-        <p class="ppap-header-text">PPAP - Embraco</p>
+        <p class="ppap-header-text">PPAP - Embraco
     </div>
     <div class="ppap-language">
-        <p class="ppap-language-switcher">Language</p>
+        <p class="ppap-language-switcher">Language
     </div>
     <div class="ppap-header-space">
         {% block base-header %}
@@ -69,7 +69,12 @@
 
     <footer>
         <div class="ppap-footer">
-            <p class="ppap-footer-text">Embraco ® Todos os direitos reservados | Desenvolvido por NEO Empresarial</p>
+            <p><span class="ppap-footer-text">
+                Embraco ® Todos os direitos reservados | Desenvolvido por
+                <a href="http://www.neo.ufsc.br/" target="_blank">
+                    NEO Empresarial <img class="neo-icon" src="{% static 'img/neo_white_icon.png' %}" alt="NEO Empresarial">
+                </a>
+            </span>
         </div>
     </footer>
     <!-- /Complete Page -->
